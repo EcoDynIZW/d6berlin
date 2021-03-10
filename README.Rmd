@@ -23,15 +23,28 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodeis, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
+> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodeis, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
 
-## Installation
+<br>
+
+***
+
+<br>## Installation
 
 You can install the `d6berlin` package from GitHub:
 
-``` r
-devtools::install_github("EcoDynIZW/d6maps")
+```{r install, eval=FALSE}
+install.packages("devtools")
+devtools::install_github("EcoDynIZW/d6berlin")
 ```
+
+(Note: If you are asked if you want to update other packgaes either press "No" (option 3) and continue or update the packages before running the install command again.)
+
+<br>
+
+***
+
+<br>
 
 ## A Basic Template Map of Imperviousness
 
@@ -46,6 +59,12 @@ You can also customize the arguments, e.g. change the color intensity, add a glo
 ```{r example-custom}
 base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500)
 ```
+
+<br>
+
+***
+
+<br>
 
 ## Adding Locations to the Map
 
@@ -76,12 +95,12 @@ library(stringr) ## for filtering based on name
 
 map + 
   geom_sf(data = filter(sf_metro, str_detect(name, "^U")), 
-          shape = 21, fill = "blue", size = 2) +
+          shape = 21, fill = "dodgerblue", size = 2) +
   geom_sf(data = filter(sf_metro, str_detect(name, "^S")), 
           shape = 21, fill = "forestgreen", size = 2)
 ```
 
-YOu can also use the `mapping` of ggplot2:
+You can also use the `mapping` functionality of ggplot2 to address variables from your data set:
 
 ```{r example-points-filter-aes, fig.height=10.5}
 map + 
@@ -96,6 +115,12 @@ map +
 
 (It looks better if you style the legend in the same horizontal layout.)
 
+<br>
+
+***
+
+<br>
+
 ## Custom Styling
 
 Since the output is a `ggplot` object, you can manipulate the result as you like (but don't apply a new theme, this will mess up the legend design):
@@ -108,7 +133,45 @@ map +
           stroke = .4, size = 2.5) +
   ggtitle("Metro Stations in Berlin") + 
   theme(plot.title = element_text(size = 30, hjust = .5, family = "Bangers"),
-        panel.grid.major = element_line(color = "grey80", size = .3),
-        axis.text = element_text(color = "grey60", size = 8))
+        panel.grid.major = element_line(color = "white", size = .3),
+        axis.text = element_text(color = "black", size = 8),
+        plot.background = element_rect(fill = "bisque", color = NA))
 ```
 
+<br>
+
+***
+
+<br>
+
+## Save Map
+
+Unfortunately, the size of the text elements is fixed. The best aspect ratio to export the map is roughly 12x9.8 and you can save it with `ggsave()` for example:
+
+```{r, eval=FALSE}
+ggsave("metro_map.pdf", width = 12, height = 9.8, device = cairo_pdf)
+```
+
+<br>
+
+-----
+
+<br>
+
+#### Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+<div style="width:300px; height:200px">
+
+<img src=https://camo.githubusercontent.com/00f7814990f36f84c5ea74cba887385d8a2f36be/68747470733a2f2f646f63732e636c6f7564706f7373652e636f6d2f696d616765732f63632d62792d6e632d73612e706e67 alt="" height="42">
+
+</div>
+
+<details><summary>Session Info</summary>
+
+```{r sessionInfo}
+Sys.time()
+git2r::repository()
+sessionInfo()
+```
+
+</details>
