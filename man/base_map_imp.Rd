@@ -8,7 +8,7 @@ base_map_imp(
   color_intensity = 0.5,
   resolution = 100,
   globe = FALSE,
-  print = TRUE
+  print = FALSE
 )
 }
 \arguments{

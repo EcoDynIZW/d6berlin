@@ -104,7 +104,7 @@ base_map_imp <- function(color_intensity = .5,
                       lineheight = .95) +
     ggplot2::theme_void() +
     ggplot2::theme(plot.margin = ggplot2::margin(20, 30, 20, 30),
-                   legend.position = c(.5, .1),
+                   legend.position = c(.5, .075),
                    text = ggplot2::element_text(family = "Segoe UI")) +
     ggplot2::guides(fill = ggplot2::guide_colorbar(direction = "horizontal",
                                                    title.position = "top",
