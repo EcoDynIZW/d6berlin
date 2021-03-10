@@ -14,6 +14,7 @@
 #' @import dplyr
 #' @import sf
 #' @import stars
+#' @import ggspatial
 #' @import systemfonts
 #' @importFrom magrittr %>%
 #' @importFrom  raster aggregate
