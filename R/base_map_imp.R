@@ -27,7 +27,7 @@ base_map_imp <- function(color_intensity = .5,
 
   ## Read 10m raster data (aggregated based on `resolution`)
   fact <- resolution / 10
-  ras_imp <- raster::aggregate(d6maps::ras_imp_orig, fact = fact)
+  ras_imp <- raster::aggregate(d6berlin::ras_imp_orig, fact = fact)
   ## turn into stars object and reproject
   sf_imp <-
     suppressMessages(
@@ -53,7 +53,7 @@ base_map_imp <- function(color_intensity = .5,
   message("Plotting basic map.")
   g <- ggplot2::ggplot() +
     ## background filling ......................................................
-    ggplot2::geom_sf(data = d6maps::sf_berlin,
+    ggplot2::geom_sf(data = d6berlin::sf_berlin,
                      fill = "white",
                      color = NA) +
     ## imperviousness ..........................................................
@@ -63,12 +63,12 @@ base_map_imp <- function(color_intensity = .5,
                                   labels = function(x) paste0(x, "%"),
                                   limits = c(0, 100)) +
     ## green areas .............................................................
-    ggplot2::geom_sf(data = d6maps::sf_type,
+    ggplot2::geom_sf(data = d6berlin::sf_type,
                      fill = col_type,
                      color = col_type,
                      lwd = 0.05) +
     ## waterways ...............................................................
-    ggplot2::geom_sf(data = d6maps::sf_water,
+    ggplot2::geom_sf(data = d6berlin::sf_water,
                      fill = col_water,
                      color = col_water)
 
@@ -78,7 +78,7 @@ base_map_imp <- function(color_intensity = .5,
 
     g <- g +
       ## inset globe ...........................................................
-      ggplot2::annotation_custom(grob = ggplot2::ggplotGrob(d6maps::globe()),
+      ggplot2::annotation_custom(grob = ggplot2::ggplotGrob(d6berlin::globe()),
                                  xmin = 13.6, xmax = 13.75,
                                  ymin = 52.55, ymax = 52.7) +
       ggplot2::theme_void()

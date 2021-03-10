@@ -125,7 +125,7 @@ globe <- function() {
   ## Berlin location ...........................................................
   sf_berlin_loc <- suppressMessages(
     sf::st_sfc(sf::st_point(c(13.4050, 52.5200)),
-               crs = sf::st_crs(d6maps::sf_berlin))
+               crs = sf::st_crs(d6berlin::sf_berlin))
   )
 
   ## Create globe as ggplot ....................................................

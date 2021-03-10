@@ -1,4 +1,4 @@
 library(testthat)
-library(d6maps)
+library(berlin)
 
-test_check("d6maps")
+test_check("berlin")
