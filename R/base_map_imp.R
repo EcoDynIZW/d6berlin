@@ -1,29 +1,32 @@
 #' Plot Berlin template map showing imperviousness and green areas
 #'
-#' @param color_intensity A numeric.  A number to control the desaturation of the color intensity, ranging from 0 (fully desaturated) to 1 (fully saturated).
-#' @param resolution A numeric. Resolution of the imperviousness raster in meters, starting from 10m.
+#' @param color_intensity A numeric.  A number to control the desaturation of
+#'                        the color intensity, ranging from 0 (fully
+#'                        desaturated) to 1 (fully saturated).
+#' @param resolution A numeric. Resolution of the imperviousness raster in
+#'                   meters, starting from 10m.
 #' @param globe A Boolean. If TRUE a inset globe is added to the map.
 #' @param print A Boolean. If TRUE prints the map in the viewer pane.
 #'
 #' @return A ggplot object containing a template map of Berlin.
 #'
-#' @examples base_map_imp()
-#' @examples base_map_imp(color_intensity = 1, globe = TRUE)
-#'
-#' @import ggplot2
-#' @import dplyr
-#' @import sf
-#' @import stars
-#' @import ggspatial
-#' @import systemfonts
 #' @importFrom magrittr %>%
-#' @importFrom  raster aggregate
+#'
+#' @examples
+#' base_map_imp()
+#' base_map_imp(color_intensity = 1, globe = TRUE)
 #'
 #' @export
 base_map_imp <- function(color_intensity = .5,
                          resolution = 100,
                          globe = FALSE,
                          print = FALSE) {
+
+  if(!dplyr::between(color_intensity, 0, 1)) stop("color_intensity must be a value between 0 and 1.")
+  if(!is.numeric(resolution) | resolution < 10) stop("resolution must be a numeric value of 10 or greater.")
+  if(!is.logical(globe)) stop("globe must be a boolean value (TRUE or FALSE).")
+  if(!is.logical(print)) stop("print must be a boolean value (TRUE or FALSE).")
+
   message("Aggregating raster data.")
 
   ## Read 10m raster data (aggregated based on `resolution`)
@@ -33,7 +36,7 @@ base_map_imp <- function(color_intensity = .5,
   sf_imp <-
     suppressMessages(
       stars::st_as_stars(ras_imp) %>%
-        sf::st_transform(crs = sf::st_crs(sf_berlin))
+        sf::st_transform(crs = sf::st_crs(d6berlin::sf_berlin))
     )
 
   ## COLOR PALETTE -------------------------------------------------------------
@@ -49,6 +52,11 @@ base_map_imp <- function(color_intensity = .5,
       (1 - color_intensity) / 1.5
     )
 
+  ## CAPTION TEXT --------------------------------------------------------------
+  caption <- "Data Berlin Map: OpenStreetMap & Geoportal Berlin"
+  if (globe == TRUE) {
+    caption <- paste0(caption, "\nData World Map: Natural Earth")
+  }
 
   ## BERLIN MAP ----------------------------------------------------------------
   message("Plotting basic map.")
@@ -93,20 +101,18 @@ base_map_imp <- function(color_intensity = .5,
     ggspatial::annotation_scale(
       location = "bl", height = ggplot2::unit(.3, "cm"),
       line_width = 1.3, width_hint = .36,
-      text_col = "black",  text_family = "Segoe UI", text_cex = .83,
-      pad_x = ggplot2::unit(1.5, "cm"), pad_y = ggplot2::unit(2.4, "cm")
+      text_col = "black", text_cex = .83, #text_family = font_family,
+      pad_x = ggplot2::unit(1.5, "cm"), pad_y = ggplot2::unit(2.1, "cm")
     ) +
     ## caption .................................................................
-    ggplot2::annotate("text", x = 13.092, y = 52.35,
+    ggplot2::annotate("text", x = 13.076, y = 52.345, label = caption,
                       hjust = 0, vjust = 1, color = "black",
-                      label = "Data Berlin Map: OpenStreetMap Contributors\nData World Map: Natural Earth",
-                      family = "Segoe UI",
-                      size = 3.6,
-                      lineheight = .95) +
+                      #family = font_family,
+                      size = 3.4, lineheight = .95) +
     ggplot2::theme_void() +
-    ggplot2::theme(plot.margin = ggplot2::margin(20, 30, 20, 30),
-                   legend.position = c(.5, .075),
-                   text = ggplot2::element_text(family = "Segoe UI")) +
+    ggplot2::theme(plot.margin = ggplot2::margin(0, 10, 0, 10),
+                   #text = ggplot2::element_text(family = font_family),
+                   legend.position = c(.5, .075)) +
     ggplot2::guides(fill = ggplot2::guide_colorbar(direction = "horizontal",
                                                    title.position = "top",
                                                    title.hjust = .5,

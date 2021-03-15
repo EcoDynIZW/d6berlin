@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%",
   fig.width = 12, 
-  fig.height = 9.8,
+  fig.height = 9.5,
   dev = "ragg_png"
 )
 ```
@@ -47,6 +47,10 @@ devtools::install_github("EcoDynIZW/d6berlin")
 <br>
 
 ## A Basic Template Map of Imperviousness
+
+The basic template map shows levels of imperviousness and green areas in Berlin. The imperviousness raster data was derived from [Geoportal Berlin (FIS-Broker)]() with a resolution of 10m. The vector data on green spaces was collected from data provided by the [OpenStreetMap Contributors](https://www.openstreetmap.org/). The green spaces consist of a mixture of landuse and natural categories (namely "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", "cliff").
+
+The map is projected in **EPSG 4326 (WGS84)**.
 
 ```{r example-basic}
 library(d6berlin)
@@ -146,10 +150,10 @@ map +
 
 ## Save Map
 
-Unfortunately, the size of the text elements is fixed. The best aspect ratio to export the map is roughly 12x9.8 and you can save it with `ggsave()` for example:
+Unfortunately, the size of the text elements is fixed. The best aspect ratio to export the map is 12x9.5 and you can save it with `ggsave()` for example:
 
 ```{r, eval=FALSE}
-ggsave("metro_map.pdf", width = 12, height = 9.8, device = cairo_pdf)
+ggsave("metro_map.pdf", width = 12, height = 9.5, device = cairo_pdf)
 ```
 
 <br>

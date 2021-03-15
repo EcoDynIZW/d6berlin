@@ -5,18 +5,13 @@
 #'
 #' @return A ggplot object containing a locator globe with pin.
 #'
-#' @examples globe()
+#' @example globe()
 #'
-#' @import ggplot2
-#' @import dplyr
-#' @import sf
 #' @importFrom magrittr %>%
-#' @importFrom  rnaturalearth ne_countries
-#' @importFrom  mapview npts
 #'
 #' @export
 globe <- function() {
-  ## code to preserve orthpgraühic view from this gist:
+  ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
 
@@ -26,7 +21,8 @@ globe <- function() {
   ## Define the orthographic projection ........................................
   lat <- 32
   lon <- 13
-  ortho <- paste0('+proj=ortho +lat_0=', lat, ' +lon_0=', lon, ' +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs')
+  ortho <- paste0('+proj=ortho +lat_0=', lat, ' +lon_0=', lon,
+                  ' +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs')
 
   ## Define the polygon to split what lies within and without your projection ..
   circle <-

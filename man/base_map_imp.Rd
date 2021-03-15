@@ -12,9 +12,12 @@ base_map_imp(
 )
 }
 \arguments{
-\item{color_intensity}{A numeric.  A number to control the desaturation of the color intensity, ranging from 0 (fully desaturated) to 1 (fully saturated).}
+\item{color_intensity}{A numeric.  A number to control the desaturation of
+the color intensity, ranging from 0 (fully
+desaturated) to 1 (fully saturated).}
 
-\item{resolution}{A numeric. Resolution of the imperviousness raster in meters, starting from 10m.}
+\item{resolution}{A numeric. Resolution of the imperviousness raster in
+meters, starting from 10m.}
 
 \item{globe}{A Boolean. If TRUE a inset globe is added to the map.}
 
