@@ -12,7 +12,3 @@ A ggplot object containing a locator globe with pin.
 \description{
 Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)
 }
-\examples{
-globe()
-
-}

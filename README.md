@@ -17,7 +17,9 @@
 
 ------------------------------------------------------------------------
 
-<br>\#\# Installation
+<br>
+
+## Installation
 
 You can install the `d6berlin` package from GitHub:
 
@@ -199,11 +201,11 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-03-15 11:30:05 CET"
+#> [1] "2021-03-15 11:37:30 CET"
 git2r::repository()
 #> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [32a473f] 2021-03-10: :heavy_plus_sign: add ggspatial dependency
+#> Head:     [e30d700] 2021-03-15: :bug: fix warning font family + caption
 sessionInfo()
 #> R version 4.0.2 (2020-06-22)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
