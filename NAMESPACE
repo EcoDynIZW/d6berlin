@@ -2,5 +2,6 @@
 
 export("%>%")
 export(base_map_imp)
+export(download_data_berlin)
 export(globe)
 importFrom(magrittr,"%>%")
