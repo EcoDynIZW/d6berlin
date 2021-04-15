@@ -4,11 +4,24 @@
 \alias{globe}
 \title{Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)}
 \usage{
-globe()
+globe(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE)
+}
+\arguments{
+\item{col_earth}{A hex code. Color used for continents.}
+
+\item{col_water}{A hex code. Color used for oceans.}
+
+\item{bg}{A Boolean. Should a background be added to the globe?}
 }
 \value{
 A ggplot object containing a locator globe with pin.
 }
 \description{
 Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)
+}
+\examples{
+\dontrun{
+globe()
+}
+
 }

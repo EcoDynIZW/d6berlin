@@ -4,15 +4,20 @@
 #' Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)
 #'
 #' @param bg A Boolean. Should a background be added to the globe?
+#' @param col_water A hex code. Color used for oceans.
+#' @param col_earth A hex code. Color used for continents.
 #'
 #' @return A ggplot object containing a locator globe with pin.
 #'
-#' @example globe()
+#' @examples
+#' \dontrun{
+#' globe()
+#' }
 #'
 #' @importFrom magrittr %>%
 #'
 #' @export
-globe <- function(bg = FALSE) {
+globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
@@ -131,13 +136,14 @@ globe <- function(bg = FALSE) {
     ggplot2::ggplot()
 
   if (isTRUE(bg)) {
-    g + ggplot2::geom_sf(data = circle, fill = "white", color = "transparent")
+    globe <- globe +
+      ggplot2::geom_sf(data = circle, fill = "white", color = "transparent")
   }
 
-  g +
-    ggplot2::geom_sf(data = circle, fill = "#96b6d8", alpha = .5) +
+  globe <- globe +
+    ggplot2::geom_sf(data = circle, fill = col_water, alpha = .5) +
     ggplot2::geom_sf(data = sf::st_collection_extract(visible),
-                     fill = "#a5bf8b", color = NA) +
+                     fill = col_earth, color = NA) +
     ggplot2::geom_sf(data = sf_berlin_loc, color = "black", size = 1.2,
                      shape = 1, stroke = 1.2) +
     ggplot2::geom_sf(data = circle, color = "grey60", fill = NA, size = .5) +
