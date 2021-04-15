@@ -17,10 +17,12 @@
 #' @importFrom magrittr %>%
 #'
 #' @examples
+#' \dontrun{
 #' base_map_imp()
 #' base_map_imp(resolution = 500, color_intensity = 1, globe = TRUE,
 #'              legend_x = .17, legend_y = .12)
 #' base_map_imp(resolution = 500, color_intensity = 1, legend = "top")
+#' }
 #'
 #' @export
 base_map_imp <- function(color_intensity = .5,
@@ -57,7 +59,9 @@ base_map_imp <- function(color_intensity = .5,
     )
 
   ## COLOR PALETTE -------------------------------------------------------------
-  pal <- scales::alpha(colorRampPalette(c("grey95", "grey5"))(100), color_intensity)
+  pal <- scales::alpha(
+    grDevices::colorRampPalette(c("grey95", "grey5"))(100), color_intensity
+  )
   col_type <-
     colorspace::desaturate(
       colorspace::lighten("#a5bf8b", (1 - color_intensity) / 1.3),
@@ -90,7 +94,7 @@ base_map_imp <- function(color_intensity = .5,
                                   limits = c(0, 100),
                                   guide = leg) +
     ## green areas .............................................................
-    ggplot2::geom_sf(data = d6berlin::sf_type,
+    ggplot2::geom_sf(data = d6berlin::sf_green,
                      fill = col_type,
                      color = col_type,
                      lwd = 0.05) +
@@ -106,7 +110,9 @@ base_map_imp <- function(color_intensity = .5,
     g <- g +
       ## inset globe ...........................................................
       ggplot2::annotation_custom(grob = ggplot2::ggplotGrob(
-                                          d6berlin::globe(bg = TRUE)
+                                          d6berlin::globe(col_earth = "#B7D19D",
+                                                          col_water = "#A9C9EB",
+                                                          bg = TRUE)
                                         ),
                                  xmin = 13.6, xmax = 13.75,
                                  ymin = 52.55, ymax = 52.7) +
