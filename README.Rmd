@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%",
   fig.width = 12, 
-  fig.height = 9.5,
+  fig.height = 9,
   dev = "ragg_png"
 )
 ```
@@ -60,11 +60,14 @@ library(d6berlin)
 base_map_imp()
 ```
 
-You can also customize the arguments, e.g. change the color intensity, add a globe with a locator pin and change the resolution of the raster:
+You can also customize the arguments, e.g. change the color intensity, add a globe with a locator pin, change the resolution of the raster, and move the legend to a custom position:
 
 ```{r example-custom}
-base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500)
+base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500,
+             legend_x = .17, legend_y = .12)
 ```
+
+If you think the legend is absolute, there is also an option called `"none"`. (The default is `"bottom"`. You can also use of the predefined setting `"top"` as illustrated below or a custom position as shown in the previous example.)
 
 <br>
 
@@ -80,7 +83,7 @@ Let's assume you have recorded some animal locations or you want to plot another
 library(ggplot2)
 library(sf)
 
-map <- base_map_imp(color_intensity = .3, resolution = 250)
+map <- base_map_imp(color_intensity = .3, resolution = 250, legend = "top")
 
 map + geom_sf(data = sf_metro)
 ```
@@ -131,17 +134,19 @@ map +
 
 Since the output is a `ggplot` object, you can manipulate the result as you like (but don't apply a new theme, this will mess up the legend design):
 
-```{r example-styling, fig.height=10.5}
+```{r example-styling, fig.height=10.2}
 library(systemfonts) ## for title font
 
-map + 
+base_map_imp(color_intensity = 1, resolution = 250, globe = TRUE,
+             legend_x = .17, legend_y = .12) + 
   geom_sf(data = sf_metro, shape = 21, fill = "white", 
-          stroke = .4, size = 2.5) +
+          stroke = .4, size = 4) +
   ggtitle("Metro Stations in Berlin") + 
   theme(plot.title = element_text(size = 30, hjust = .5, family = "Bangers"),
         panel.grid.major = element_line(color = "white", size = .3),
         axis.text = element_text(color = "black", size = 8),
-        plot.background = element_rect(fill = "bisque", color = NA))
+        plot.background = element_rect(fill = "#fff0de", color = NA),
+        plot.margin = margin(rep(20, 4)))
 ```
 
 <br>
@@ -152,10 +157,10 @@ map +
 
 ## Save Map
 
-Unfortunately, the size of the text elements is fixed. The best aspect ratio to export the map is 12x9.5 and you can save it with `ggsave()` for example:
+Unfortunately, the size of the text elements is fixed. The best aspect ratio to export the map is 12x9 and you can save it with `ggsave()` for example:
 
 ```{r, eval=FALSE}
-ggsave("metro_map.pdf", width = 12, height = 9.5, device = cairo_pdf)
+ggsave("metro_map.pdf", width = 12, height = 9, device = cairo_pdf)
 ```
 
 <br>

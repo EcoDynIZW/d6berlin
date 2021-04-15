@@ -60,13 +60,20 @@ base_map_imp()
 <img src="man/figures/README-example-basic-1.png" width="100%" />
 
 You can also customize the arguments, e.g. change the color intensity,
-add a globe with a locator pin and change the resolution of the raster:
+add a globe with a locator pin, change the resolution of the raster, and
+move the legend to a custom position:
 
 ``` r
-base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500)
+base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500,
+             legend_x = .17, legend_y = .12)
 ```
 
 <img src="man/figures/README-example-custom-1.png" width="100%" />
+
+If you think the legend is absolute, there is also an option called
+`"none"`. (The default is `"bottom"`. You can also use of the predefined
+setting `"top"` as illustrated below or a custom position as shown in
+the previous example.)
 
 <br>
 
@@ -84,7 +91,7 @@ Berlin metro stations by adding `geom_sf(data = )` to the template map:
 library(ggplot2)
 library(sf)
 
-map <- base_map_imp(color_intensity = .3, resolution = 250)
+map <- base_map_imp(color_intensity = .3, resolution = 250, legend = "top")
 
 map + geom_sf(data = sf_metro)
 ```
@@ -152,14 +159,16 @@ design):
 ``` r
 library(systemfonts) ## for title font
 
-map + 
+base_map_imp(color_intensity = 1, resolution = 250, globe = TRUE,
+             legend_x = .17, legend_y = .12) + 
   geom_sf(data = sf_metro, shape = 21, fill = "white", 
-          stroke = .4, size = 2.5) +
+          stroke = .4, size = 4) +
   ggtitle("Metro Stations in Berlin") + 
   theme(plot.title = element_text(size = 30, hjust = .5, family = "Bangers"),
         panel.grid.major = element_line(color = "white", size = .3),
         axis.text = element_text(color = "black", size = 8),
-        plot.background = element_rect(fill = "bisque", color = NA))
+        plot.background = element_rect(fill = "#fff0de", color = NA),
+        plot.margin = margin(rep(20, 4)))
 ```
 
 <img src="man/figures/README-example-styling-1.png" width="100%" />
@@ -173,11 +182,11 @@ map +
 ## Save Map
 
 Unfortunately, the size of the text elements is fixed. The best aspect
-ratio to export the map is 12x9.5 and you can save it with `ggsave()`
-for example:
+ratio to export the map is 12x9 and you can save it with `ggsave()` for
+example:
 
 ``` r
-ggsave("metro_map.pdf", width = 12, height = 9.5, device = cairo_pdf)
+ggsave("metro_map.pdf", width = 12, height = 9, device = cairo_pdf)
 ```
 
 <br>
@@ -201,13 +210,13 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-03-15 11:37:30 CET"
+#> [1] "2021-04-15 17:31:53 CEST"
 git2r::repository()
 #> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [e30d700] 2021-03-15: :bug: fix warning font family + caption
+#> Head:     [7b65aa5] 2021-04-15: :heavy_plus_sign: add options to place the legend manually/remove the legend
 sessionInfo()
-#> R version 4.0.2 (2020-06-22)
+#> R version 4.0.4 (2021-02-15)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
 #> Running under: Windows 10 x64 (build 19041)
 #> 
@@ -223,32 +232,33 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] systemfonts_1.0.1   stringr_1.4.0       dplyr_1.0.4        
+#> [1] systemfonts_1.0.1   stringr_1.4.0       dplyr_1.0.5        
 #> [4] sf_0.9-7            ggplot2_3.3.3       d6berlin_0.0.0.9000
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] Rcpp_1.0.6          rnaturalearth_0.1.0 lattice_0.20-41    
-#>  [4] png_0.1-7           class_7.3-17        assertthat_0.2.1   
-#>  [7] digest_0.6.27       R6_2.5.0            stats4_4.0.2       
-#> [10] evaluate_0.14       e1071_1.7-4         highr_0.8          
-#> [13] pillar_1.4.7        rlang_0.4.10        raster_3.4-5       
-#> [16] rmarkdown_2.6       textshaping_0.3.0   labeling_0.4.2     
-#> [19] webshot_0.5.2       htmlwidgets_1.5.3   munsell_0.5.0      
-#> [22] compiler_4.0.2      xfun_0.20           pkgconfig_2.0.3    
-#> [25] base64enc_0.1-3     rgeos_0.5-5         htmltools_0.5.1.1  
-#> [28] tidyselect_1.1.0    tibble_3.0.6        codetools_0.2-16   
-#> [31] mapview_2.9.0       withr_2.4.1         crayon_1.4.0       
-#> [34] grid_4.0.2          lwgeom_0.2-5        satellite_1.0.2    
-#> [37] gtable_0.3.0        lifecycle_0.2.0     DBI_1.1.1          
-#> [40] git2r_0.28.0        magrittr_2.0.1      units_0.6-7        
-#> [43] scales_1.1.1        KernSmooth_2.23-17  stringi_1.5.3      
-#> [46] farver_2.0.3        leaflet_2.0.4.1     sp_1.4-5           
-#> [49] ellipsis_0.3.1      ragg_1.1.0          generics_0.1.0     
-#> [52] vctrs_0.3.6         RColorBrewer_1.1-2  tools_4.0.2        
-#> [55] ggspatial_1.1.5     leafem_0.1.3        glue_1.4.2         
-#> [58] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
-#> [61] parallel_4.0.2      yaml_2.2.1          colorspace_2.0-0   
-#> [64] stars_0.5-1         classInt_0.4-3      knitr_1.31
+#>  [4] png_0.1-7           class_7.3-18        assertthat_0.2.1   
+#>  [7] digest_0.6.27       utf8_1.2.1          R6_2.5.0           
+#> [10] stats4_4.0.4        evaluate_0.14       e1071_1.7-4        
+#> [13] highr_0.8           pillar_1.5.1        rlang_0.4.10       
+#> [16] raster_3.4-5        rmarkdown_2.6       textshaping_0.3.3  
+#> [19] labeling_0.4.2      webshot_0.5.2       htmlwidgets_1.5.3  
+#> [22] munsell_0.5.0       compiler_4.0.4      xfun_0.22          
+#> [25] pkgconfig_2.0.3     base64enc_0.1-3     rgeos_0.5-5        
+#> [28] htmltools_0.5.1.1   tidyselect_1.1.0    tibble_3.1.0       
+#> [31] codetools_0.2-18    mapview_2.9.0       fansi_0.4.2        
+#> [34] withr_2.4.1         crayon_1.4.1        grid_4.0.4         
+#> [37] satellite_1.0.2     lwgeom_0.2-5        gtable_0.3.0       
+#> [40] lifecycle_1.0.0     DBI_1.1.1           git2r_0.28.0       
+#> [43] magrittr_2.0.1      units_0.6-7         scales_1.1.1       
+#> [46] KernSmooth_2.23-18  stringi_1.5.3       debugme_1.1.0      
+#> [49] farver_2.1.0        leaflet_2.0.4.1     sp_1.4-5           
+#> [52] ellipsis_0.3.1      ragg_1.1.2          generics_0.1.0     
+#> [55] vctrs_0.3.6         RColorBrewer_1.1-2  tools_4.0.4        
+#> [58] ggspatial_1.1.5     leafem_0.1.3        glue_1.4.2         
+#> [61] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
+#> [64] parallel_4.0.4      yaml_2.2.1          colorspace_2.0-0   
+#> [67] stars_0.5-1         classInt_0.4-3      knitr_1.31
 ```
 
 </details>
