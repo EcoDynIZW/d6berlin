@@ -105,7 +105,9 @@ base_map_imp <- function(color_intensity = .5,
 
     g <- g +
       ## inset globe ...........................................................
-      ggplot2::annotation_custom(grob = ggplot2::ggplotGrob(d6berlin::globe()),
+      ggplot2::annotation_custom(grob = ggplot2::ggplotGrob(
+                                          d6berlin::globe(bg = TRUE)
+                                        ),
                                  xmin = 13.6, xmax = 13.75,
                                  ymin = 52.55, ymax = 52.7) +
       ggplot2::theme_void()
