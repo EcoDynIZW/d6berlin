@@ -8,6 +8,9 @@ base_map_imp(
   color_intensity = 0.5,
   resolution = 100,
   globe = FALSE,
+  legend = "bottom",
+  legend_x = NULL,
+  legend_y = NULL,
   print = FALSE
 )
 }
@@ -21,6 +24,13 @@ meters, starting from 10m.}
 
 \item{globe}{A Boolean. If TRUE a inset globe is added to the map.}
 
+\item{legend}{A string. Either "bottom", "top", or "none". Otherwise specify
+positions via legend_x and legend_y}
+
+\item{legend_x}{A numeric. Horizontal position of the legend (0–1)}
+
+\item{legend_y}{A numeric. Vertical position of the legend (0–1)}
+
 \item{print}{A Boolean. If TRUE prints the map in the viewer pane.}
 }
 \value{
@@ -30,7 +40,11 @@ A ggplot object containing a template map of Berlin.
 Plot Berlin template map showing imperviousness and green areas
 }
 \examples{
+\dontrun{
 base_map_imp()
-base_map_imp(color_intensity = 1, globe = TRUE)
+base_map_imp(resolution = 500, color_intensity = 1, globe = TRUE,
+             legend_x = .17, legend_y = .12)
+base_map_imp(resolution = 500, color_intensity = 1, legend = "top")
+}
 
 }
