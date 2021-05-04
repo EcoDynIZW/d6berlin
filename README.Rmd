@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodeis, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
+> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water boders, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
 
 <br>
 

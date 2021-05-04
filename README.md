@@ -8,7 +8,7 @@
 
 > The `d6berlin` package aims to provide template maps for Berlin with
 > carefully chosen and aesthetically pleasing defaults. Template maps
-> include green spaces, imperviousness levels, water bodeis, district
+> include green spaces, imperviousness levels, water boders, district
 > borders, and roads plus the utility to add a globe with locator pin, a
 > scalebar, and a caption to include the data sources. All objects are
 > returned as `ggplot` objects.
@@ -210,13 +210,13 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-04-15 20:10:49 CEST"
+#> [1] "2021-05-04 11:14:42 CEST"
 git2r::repository()
 #> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [f5d1862] 2021-04-15: :memo: update readme
+#> Head:     [fa241c7] 2021-04-19: :truck: rm raster from data-raw
 sessionInfo()
-#> R version 4.0.4 (2021-02-15)
+#> R version 4.0.2 (2020-06-22)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
 #> Running under: Windows 10 x64 (build 19041)
 #> 
@@ -237,29 +237,28 @@ sessionInfo()
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] Rcpp_1.0.6          rnaturalearth_0.1.0 lattice_0.20-41    
-#>  [4] png_0.1-7           class_7.3-18        assertthat_0.2.1   
+#>  [4] png_0.1-7           class_7.3-17        assertthat_0.2.1   
 #>  [7] digest_0.6.27       utf8_1.2.1          R6_2.5.0           
-#> [10] stats4_4.0.4        evaluate_0.14       e1071_1.7-4        
-#> [13] highr_0.8           pillar_1.5.1        rlang_0.4.10       
+#> [10] stats4_4.0.2        evaluate_0.14       e1071_1.7-4        
+#> [13] highr_0.8           pillar_1.6.0        rlang_0.4.10       
 #> [16] raster_3.4-5        rmarkdown_2.6       textshaping_0.3.3  
 #> [19] labeling_0.4.2      webshot_0.5.2       rgdal_1.5-23       
-#> [22] htmlwidgets_1.5.3   munsell_0.5.0       compiler_4.0.4     
+#> [22] htmlwidgets_1.5.3   munsell_0.5.0       compiler_4.0.2     
 #> [25] xfun_0.22           pkgconfig_2.0.3     base64enc_0.1-3    
 #> [28] rgeos_0.5-5         htmltools_0.5.1.1   tidyselect_1.1.0   
-#> [31] tibble_3.1.0        codetools_0.2-18    mapview_2.9.0      
+#> [31] tibble_3.1.0        codetools_0.2-16    mapview_2.9.0      
 #> [34] fansi_0.4.2         withr_2.4.1         crayon_1.4.1       
-#> [37] grid_4.0.4          satellite_1.0.2     lwgeom_0.2-5       
+#> [37] grid_4.0.2          lwgeom_0.2-5        satellite_1.0.2    
 #> [40] gtable_0.3.0        lifecycle_1.0.0     DBI_1.1.1          
 #> [43] git2r_0.28.0        magrittr_2.0.1      units_0.6-7        
-#> [46] scales_1.1.1        KernSmooth_2.23-18  stringi_1.5.3      
-#> [49] debugme_1.1.0       farver_2.1.0        leaflet_2.0.4.1    
-#> [52] sp_1.4-5            ellipsis_0.3.1      ragg_1.1.2         
-#> [55] generics_0.1.0      vctrs_0.3.6         RColorBrewer_1.1-2 
-#> [58] tools_4.0.4         ggspatial_1.1.5     leafem_0.1.3       
-#> [61] glue_1.4.2          purrr_0.3.4         crosstalk_1.1.1    
-#> [64] abind_1.4-5         parallel_4.0.4      yaml_2.2.1         
-#> [67] colorspace_2.0-0    stars_0.5-1         classInt_0.4-3     
-#> [70] knitr_1.31
+#> [46] scales_1.1.1        KernSmooth_2.23-17  stringi_1.5.3      
+#> [49] farver_2.1.0        leaflet_2.0.4.1     sp_1.4-5           
+#> [52] ellipsis_0.3.1      ragg_1.1.2          generics_0.1.0     
+#> [55] vctrs_0.3.6         RColorBrewer_1.1-2  tools_4.0.2        
+#> [58] ggspatial_1.1.5     leafem_0.1.3        glue_1.4.2         
+#> [61] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
+#> [64] parallel_4.0.2      yaml_2.2.1          colorspace_2.0-0   
+#> [67] stars_0.5-1         classInt_0.4-3      knitr_1.31
 ```
 
 </details>
