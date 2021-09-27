@@ -48,14 +48,20 @@ base_map_imp <- function(color_intensity = .5,
 
   message("Aggregating raster data.")
 
+  ## load data
+  ras_imp <- data(ras_imp_orig)
+  sf_berlin <- data(sf_berlin)
+  sf_green <- data(sf_green)
+  sf_water <- data(sf_water)
+
   ## Read 10m raster data (aggregated based on `resolution`)
   fact <- resolution / 10
-  ras_imp <- raster::aggregate(d6berlin::ras_imp_orig, fact = fact)
+  ras_imp <- raster::aggregate(ras_imp, fact = fact)
   ## turn into stars object and reproject
   sf_imp <-
     suppressMessages(
       stars::st_as_stars(ras_imp) %>%
-        sf::st_transform(crs = sf::st_crs(d6berlin::sf_berlin))
+        sf::st_transform(crs = sf::st_crs(sf_berlin))
     )
 
   ## COLOR PALETTE -------------------------------------------------------------
@@ -83,7 +89,7 @@ base_map_imp <- function(color_intensity = .5,
   message("Plotting basic map.")
   g <- ggplot2::ggplot() +
     ## background filling ......................................................
-    ggplot2::geom_sf(data = d6berlin::sf_berlin,
+    ggplot2::geom_sf(data = sf_berlin,
                      fill = "white",
                      color = NA) +
     ## imperviousness ..........................................................
@@ -94,12 +100,12 @@ base_map_imp <- function(color_intensity = .5,
                                   limits = c(0, 100),
                                   guide = leg) +
     ## green areas .............................................................
-    ggplot2::geom_sf(data = d6berlin::sf_green,
+    ggplot2::geom_sf(data = sf_green,
                      fill = col_type,
                      color = col_type,
                      lwd = 0.05) +
     ## waterways ...............................................................
-    ggplot2::geom_sf(data = d6berlin::sf_water,
+    ggplot2::geom_sf(data = sf_water,
                      fill = col_water,
                      color = col_water)
 
