@@ -2,7 +2,9 @@
 
 ## FILE PATH -----------------------------------------------------------------
 path <-
-  here::here("data-raw", "imperviousness_berlin_copernicus_raster_10m_2018_3035.tif")
+  here::here(
+    "inst",
+    "imperviousness_berlin_copernicus_raster_10m_2018_3035.tif")
 
 ## PREPARE DATA --------------------------------------------------------------
 ## Berlin imperviousness levels (WGS 84)
