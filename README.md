@@ -15,7 +15,7 @@
 
 <br>
 
-------------------------------------------------------------------------
+# 
 
 <br>
 
@@ -34,7 +34,7 @@ the install command again.)
 
 <br>
 
-------------------------------------------------------------------------
+# 
 
 <br>
 
@@ -77,7 +77,7 @@ the previous example.)
 
 <br>
 
-------------------------------------------------------------------------
+# 
 
 <br>
 
@@ -85,7 +85,7 @@ the previous example.)
 
 Let’s assume you have recorded some animal locations or you want to plot
 another information on to of this plot. For example, let’s visualize the
-Berlin metro stations by adding `geom_sf(data = )` to the template map:
+Berlin metro stations by adding `geom_sf(data = x)` to the template map:
 
 ``` r
 library(ggplot2)
@@ -93,14 +93,14 @@ library(sf)
 
 map <- base_map_imp(color_intensity = .3, resolution = 250, legend = "top")
 
-map + geom_sf(data = sf_metro)
+map + geom_sf(data = sf_metro) ## sf_metro is contained in the d6berlin package
 ```
 
 <img src="man/figures/README-example-add-points-1.png" width="100%" />
 
 **Note:** Since the template map contains many filled areas, we
-recommend to add only point or line geometries (or maybe polygon
-geometries without a filling) to the template maps
+recommend to add geometries with variables mapped to `color|xolour|col`
+to the template maps.
 
 You can, of course, style the appearance of the points as usual:
 
@@ -146,7 +146,7 @@ map +
 
 <br>
 
-------------------------------------------------------------------------
+# 
 
 <br>
 
@@ -175,7 +175,7 @@ base_map_imp(color_intensity = 1, resolution = 250, globe = TRUE,
 
 <br>
 
-------------------------------------------------------------------------
+# 
 
 <br>
 
@@ -191,17 +191,7 @@ ggsave("metro_map.pdf", width = 12, height = 9, device = cairo_pdf)
 
 <br>
 
-------------------------------------------------------------------------
-
-<br>
-
-#### Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
-
-<div style="width:300px; height:200px">
-
-<img src=https://camo.githubusercontent.com/00f7814990f36f84c5ea74cba887385d8a2f36be/68747470733a2f2f646f63732e636c6f7564706f7373652e636f6d2f696d616765732f63632d62792d6e632d73612e706e67 alt="" height="42">
-
-</div>
+# 
 
 <details>
 <summary>
@@ -210,15 +200,15 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-05-04 11:14:42 CEST"
+#> [1] "2021-09-27 12:23:19 CEST"
 git2r::repository()
 #> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [fa241c7] 2021-04-19: :truck: rm raster from data-raw
+#> Head:     [9020e1d] 2021-05-04: :memo: update readme
 sessionInfo()
-#> R version 4.0.2 (2020-06-22)
+#> R version 4.1.0 (2021-05-18)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
-#> Running under: Windows 10 x64 (build 19041)
+#> Running under: Windows 10 x64 (build 19043)
 #> 
 #> Matrix products: default
 #> 
@@ -232,33 +222,47 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] systemfonts_1.0.1   stringr_1.4.0       dplyr_1.0.5        
-#> [4] sf_0.9-7            ggplot2_3.3.3       d6berlin_0.0.0.9000
+#> [1] systemfonts_1.0.2   stringr_1.4.0       dplyr_1.0.7        
+#> [4] sf_1.0-2            ggplot2_3.3.5       d6berlin_0.0.0.9000
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] Rcpp_1.0.6          rnaturalearth_0.1.0 lattice_0.20-41    
-#>  [4] png_0.1-7           class_7.3-17        assertthat_0.2.1   
-#>  [7] digest_0.6.27       utf8_1.2.1          R6_2.5.0           
-#> [10] stats4_4.0.2        evaluate_0.14       e1071_1.7-4        
-#> [13] highr_0.8           pillar_1.6.0        rlang_0.4.10       
-#> [16] raster_3.4-5        rmarkdown_2.6       textshaping_0.3.3  
-#> [19] labeling_0.4.2      webshot_0.5.2       rgdal_1.5-23       
-#> [22] htmlwidgets_1.5.3   munsell_0.5.0       compiler_4.0.2     
-#> [25] xfun_0.22           pkgconfig_2.0.3     base64enc_0.1-3    
-#> [28] rgeos_0.5-5         htmltools_0.5.1.1   tidyselect_1.1.0   
-#> [31] tibble_3.1.0        codetools_0.2-16    mapview_2.9.0      
-#> [34] fansi_0.4.2         withr_2.4.1         crayon_1.4.1       
-#> [37] grid_4.0.2          lwgeom_0.2-5        satellite_1.0.2    
-#> [40] gtable_0.3.0        lifecycle_1.0.0     DBI_1.1.1          
-#> [43] git2r_0.28.0        magrittr_2.0.1      units_0.6-7        
-#> [46] scales_1.1.1        KernSmooth_2.23-17  stringi_1.5.3      
-#> [49] farver_2.1.0        leaflet_2.0.4.1     sp_1.4-5           
-#> [52] ellipsis_0.3.1      ragg_1.1.2          generics_0.1.0     
-#> [55] vctrs_0.3.6         RColorBrewer_1.1-2  tools_4.0.2        
-#> [58] ggspatial_1.1.5     leafem_0.1.3        glue_1.4.2         
-#> [61] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
-#> [64] parallel_4.0.2      yaml_2.2.1          colorspace_2.0-0   
-#> [67] stars_0.5-1         classInt_0.4-3      knitr_1.31
+#>  [1] Rcpp_1.0.7          rnaturalearth_0.1.0 lattice_0.20-44    
+#>  [4] png_0.1-7           class_7.3-19        assertthat_0.2.1   
+#>  [7] digest_0.6.28       utf8_1.2.2          R6_2.5.1           
+#> [10] stats4_4.1.0        evaluate_0.14       e1071_1.7-9        
+#> [13] highr_0.9           pillar_1.6.3        rlang_0.4.11       
+#> [16] raster_3.4-13       rmarkdown_2.11      textshaping_0.3.5  
+#> [19] labeling_0.4.2      webshot_0.5.2       rgdal_1.5-27       
+#> [22] htmlwidgets_1.5.4   munsell_0.5.0       proxy_0.4-26       
+#> [25] compiler_4.1.0      xfun_0.26           pkgconfig_2.0.3    
+#> [28] base64enc_0.1-3     rgeos_0.5-8         htmltools_0.5.2    
+#> [31] tidyselect_1.1.1    tibble_3.1.4        codetools_0.2-18   
+#> [34] mapview_2.10.0      fansi_0.5.0         withr_2.4.2        
+#> [37] crayon_1.4.1        wk_0.5.0            grid_4.1.0         
+#> [40] satellite_1.0.2     lwgeom_0.2-7        gtable_0.3.0       
+#> [43] lifecycle_1.0.1     DBI_1.1.1           git2r_0.28.0       
+#> [46] magrittr_2.0.1      units_0.7-2         scales_1.1.1       
+#> [49] KernSmooth_2.23-20  stringi_1.7.4       farver_2.1.0       
+#> [52] leaflet_2.0.4.1     sp_1.4-5            ellipsis_0.3.2     
+#> [55] ragg_1.1.3          generics_0.1.0      vctrs_0.3.8        
+#> [58] RColorBrewer_1.1-2  s2_1.0.6            tools_4.1.0        
+#> [61] ggspatial_1.1.5     leafem_0.1.6        glue_1.4.2         
+#> [64] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
+#> [67] parallel_4.1.0      fastmap_1.1.0       yaml_2.2.1         
+#> [70] colorspace_2.0-2    stars_0.5-3         classInt_0.4-3     
+#> [73] knitr_1.34
 ```
 
 </details>
+
+------------------------------------------------------------------------
+
+<br>
+
+#### Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+
+<div style="width:300px; height:200px">
+
+<img src=https://camo.githubusercontent.com/00f7814990f36f84c5ea74cba887385d8a2f36be/68747470733a2f2f646f63732e636c6f7564706f7373652e636f6d2f696d616765732f63632d62792d6e632d73612e706e67 alt="" height="42">
+
+</div>

@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
 
 <br>
 
-***
+#
 
 <br>
 
@@ -44,7 +44,7 @@ devtools::install_github("EcoDynIZW/d6berlin")
 
 <br>
 
-***
+#
 
 <br>
 
@@ -71,13 +71,13 @@ If you think the legend is absolute, there is also an option called `"none"`. (T
 
 <br>
 
-***
+#
 
 <br>
 
 ## Adding Locations to the Map
 
-Let's assume you have recorded some animal locations or you want to plot another information on to of this plot. For example, let's visualize the Berlin metro stations by adding `geom_sf(data = )` to the template map:
+Let's assume you have recorded some animal locations or you want to plot another information on to of this plot. For example, let's visualize the Berlin metro stations by adding `geom_sf(data = x)` to the template map:
 
 ```{r example-add-points}
 library(ggplot2)
@@ -85,10 +85,10 @@ library(sf)
 
 map <- base_map_imp(color_intensity = .3, resolution = 250, legend = "top")
 
-map + geom_sf(data = sf_metro)
+map + geom_sf(data = sf_metro) ## sf_metro is contained in the d6berlin package
 ```
 
-**Note:** Since the template map contains many filled areas, we recommend to add only point or line geometries (or maybe polygon geometries without a filling) to the template maps
+**Note:** Since the template map contains many filled areas, we recommend to add geometries with variables mapped to `color|xolour|col` to the template maps.
 
 You can, of course, style the appearance of the points as usual:
 
@@ -126,7 +126,7 @@ map +
 
 <br>
 
-***
+#
 
 <br>
 
@@ -151,7 +151,7 @@ base_map_imp(color_intensity = 1, resolution = 250, globe = TRUE,
 
 <br>
 
-***
+#
 
 <br>
 
@@ -165,6 +165,18 @@ ggsave("metro_map.pdf", width = 12, height = 9, device = cairo_pdf)
 
 <br>
 
+#
+
+<details><summary>Session Info</summary>
+
+```{r sessionInfo}
+Sys.time()
+git2r::repository()
+sessionInfo()
+```
+
+</details>
+
 -----
 
 <br>
@@ -176,13 +188,3 @@ ggsave("metro_map.pdf", width = 12, height = 9, device = cairo_pdf)
 <img src=https://camo.githubusercontent.com/00f7814990f36f84c5ea74cba887385d8a2f36be/68747470733a2f2f646f63732e636c6f7564706f7373652e636f6d2f696d616765732f63632d62792d6e632d73612e706e67 alt="" height="42">
 
 </div>
-
-<details><summary>Session Info</summary>
-
-```{r sessionInfo}
-Sys.time()
-git2r::repository()
-sessionInfo()
-```
-
-</details>
