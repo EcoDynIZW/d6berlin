@@ -7,6 +7,19 @@ path <-
 ## PREPARE DATA --------------------------------------------------------------
 ## Berlin imperviousness levels (WGS 84)
 ## Source: Copernicus
-ras_imp_orig <- terra::rast(path)
+#ras_imp_orig <- terra::rast(path)
+
+# internal.env <- new.env()
+# internal.env$ras_imp_orig <- terra::rast(path)
+#
+# usethis::use_data(
+#   ras_imp_orig,
+#   internal.env,
+#   internal = TRUE,
+#   overwrite = TRUE
+# )
+
+
+ras_imp_orig <- lazyraster::lazyraster(path)
 
 usethis::use_data(ras_imp_orig, overwrite = TRUE)
