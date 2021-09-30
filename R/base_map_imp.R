@@ -53,10 +53,12 @@ base_map_imp <- function(color_intensity = .5,
   # sf_berlin <- data(sf_berlin)
   # sf_green <- data(sf_green)
   # sf_water <- data(sf_water)
+  ras_imp_orig <- raster::raster(system.file("extdata", "imperviousness_berlin_copernicus_raster_10m_2018_3035.tif", package = "d6berlin"))
+
 
   ## Read 10m raster data (aggregated based on `resolution`)
   fact <- resolution / 10
-  ras_imp <- raster::aggregate(d6berlin::ras_imp_orig, fact = fact)
+  ras_imp <- raster::aggregate(ras_imp_orig, fact = fact)
   ## turn into stars object and reproject
   sf_imp <-
     suppressMessages(
