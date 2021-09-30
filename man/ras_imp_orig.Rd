@@ -5,7 +5,7 @@
 \alias{ras_imp_orig}
 \title{Berlin imperviousness levels (WGS 84)}
 \format{
-An object of class \code{RasterLayer} of dimension 3893 x 4761 x 1.
+An object of class \code{lazyraster} of length 4.
 }
 \source{
 \url{https://download.geofabrik.de/europe/germany/berlin.html}
