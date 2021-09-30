@@ -5,7 +5,7 @@
 \alias{sf_metro}
 \title{Berlin metro station (WGS 84)}
 \format{
-An object of class \code{sf} (inherits from \code{data.frame}) with 249 rows and 77 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 260 rows and 11 columns.
 }
 \source{
 \url{https://download.geofabrik.de/europe/germany/berlin.html}
