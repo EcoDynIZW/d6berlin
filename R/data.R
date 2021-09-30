@@ -26,7 +26,6 @@
 #' A raster file containing the imperviousness levels in Berlin on a 10m resolution.
 #'
 #' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
-#' @export
 "ras_imp_orig"
 
 #' Berlin metro station (WGS 84)
