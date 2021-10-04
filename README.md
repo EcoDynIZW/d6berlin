@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# d6berlin
+# d6berlin <img src='man/figures/hexlogo.png' align="right" height="151.5" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -131,10 +131,9 @@ variables from your data set:
 
 ``` r
 map + 
-  geom_sf(data = sf_metro, aes(color = internet_access), size = 2) +
-  scale_color_brewer(palette = "Dark2", 
-                     name = "Internet Access?",
-                     na.value = "grey60") +
+  geom_sf(data = sf_metro, aes(color = type), size = 2) +
+  scale_color_discrete(type = c("dodgerblue", "forestgreen"), 
+                     name = NULL) +
   guides(color = guide_legend(direction = "horizontal",
                               title.position = "top", 
                               title.hjust = .5))
@@ -200,15 +199,15 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-09-27 12:23:19 CEST"
+#> [1] "2021-10-04 16:42:30 CEST"
 git2r::repository()
-#> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
+#> Local:    main U:/GUEST/Abteilung6/People/Scherer_Cedric/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [9020e1d] 2021-05-04: :memo: update readme
+#> Head:     [5eb6523] 2021-10-04: add hex logo
 sessionInfo()
-#> R version 4.1.0 (2021-05-18)
+#> R version 4.1.1 (2021-08-10)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
-#> Running under: Windows 10 x64 (build 19043)
+#> Running under: Windows 10 x64 (build 19041)
 #> 
 #> Matrix products: default
 #> 
@@ -216,7 +215,6 @@ sessionInfo()
 #> [1] LC_COLLATE=German_Germany.1252  LC_CTYPE=German_Germany.1252   
 #> [3] LC_MONETARY=German_Germany.1252 LC_NUMERIC=C                   
 #> [5] LC_TIME=German_Germany.1252    
-#> system code page: 65001
 #> 
 #> attached base packages:
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
@@ -228,29 +226,28 @@ sessionInfo()
 #> loaded via a namespace (and not attached):
 #>  [1] Rcpp_1.0.7          rnaturalearth_0.1.0 lattice_0.20-44    
 #>  [4] png_0.1-7           class_7.3-19        assertthat_0.2.1   
-#>  [7] digest_0.6.28       utf8_1.2.2          R6_2.5.1           
-#> [10] stats4_4.1.0        evaluate_0.14       e1071_1.7-9        
-#> [13] highr_0.9           pillar_1.6.3        rlang_0.4.11       
+#>  [7] digest_0.6.27       utf8_1.2.2          R6_2.5.1           
+#> [10] stats4_4.1.1        evaluate_0.14       e1071_1.7-9        
+#> [13] highr_0.9           pillar_1.6.2        rlang_0.4.11       
 #> [16] raster_3.4-13       rmarkdown_2.11      textshaping_0.3.5  
 #> [19] labeling_0.4.2      webshot_0.5.2       rgdal_1.5-27       
 #> [22] htmlwidgets_1.5.4   munsell_0.5.0       proxy_0.4-26       
-#> [25] compiler_4.1.0      xfun_0.26           pkgconfig_2.0.3    
-#> [28] base64enc_0.1-3     rgeos_0.5-8         htmltools_0.5.2    
+#> [25] compiler_4.1.1      xfun_0.26           pkgconfig_2.0.3    
+#> [28] base64enc_0.1-3     rgeos_0.5-7         htmltools_0.5.2    
 #> [31] tidyselect_1.1.1    tibble_3.1.4        codetools_0.2-18   
 #> [34] mapview_2.10.0      fansi_0.5.0         withr_2.4.2        
-#> [37] crayon_1.4.1        wk_0.5.0            grid_4.1.0         
+#> [37] crayon_1.4.1        wk_0.5.0            grid_4.1.1         
 #> [40] satellite_1.0.2     lwgeom_0.2-7        gtable_0.3.0       
-#> [43] lifecycle_1.0.1     DBI_1.1.1           git2r_0.28.0       
+#> [43] lifecycle_1.0.0     DBI_1.1.1           git2r_0.28.0       
 #> [46] magrittr_2.0.1      units_0.7-2         scales_1.1.1       
 #> [49] KernSmooth_2.23-20  stringi_1.7.4       farver_2.1.0       
 #> [52] leaflet_2.0.4.1     sp_1.4-5            ellipsis_0.3.2     
 #> [55] ragg_1.1.3          generics_0.1.0      vctrs_0.3.8        
-#> [58] RColorBrewer_1.1-2  s2_1.0.6            tools_4.1.0        
-#> [61] ggspatial_1.1.5     leafem_0.1.6        glue_1.4.2         
-#> [64] purrr_0.3.4         crosstalk_1.1.1     abind_1.4-5        
-#> [67] parallel_4.1.0      fastmap_1.1.0       yaml_2.2.1         
-#> [70] colorspace_2.0-2    stars_0.5-3         classInt_0.4-3     
-#> [73] knitr_1.34
+#> [58] s2_1.0.6            tools_4.1.1         ggspatial_1.1.5    
+#> [61] leafem_0.1.6        glue_1.4.2          purrr_0.3.4        
+#> [64] crosstalk_1.1.1     abind_1.4-5         parallel_4.1.1     
+#> [67] fastmap_1.1.0       yaml_2.2.1          colorspace_2.0-2   
+#> [70] stars_0.5-3         classInt_0.4-3      knitr_1.34
 ```
 
 </details>

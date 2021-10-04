@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# d6berlin
+# d6berlin <img src='man/figures/hexlogo.png' align="right" height="151.5" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -113,10 +113,9 @@ You can also use the `mapping` functionality of ggplot2 to address variables fro
 
 ```{r example-points-filter-aes, fig.height=10.5}
 map + 
-  geom_sf(data = sf_metro, aes(color = internet_access), size = 2) +
-  scale_color_brewer(palette = "Dark2", 
-                     name = "Internet Access?",
-                     na.value = "grey60") +
+  geom_sf(data = sf_metro, aes(color = type), size = 2) +
+  scale_color_discrete(type = c("dodgerblue", "forestgreen"), 
+                     name = NULL) +
   guides(color = guide_legend(direction = "horizontal",
                               title.position = "top", 
                               title.hjust = .5))
