@@ -18,13 +18,18 @@ sf_metro <-
                 layer = "gis_osm_transport_free_1") %>%
       dplyr::filter(
         fclass %in% c("railway_station"),
-        stringr::str_detect(name, "^U |^S ")
+        stringr::str_detect(name, "^U |^S |^S+U |^U+S")
       ) %>%
       dplyr::mutate(
-        name = str_replace_all(name, "ß", "ss"),
-        name = str_replace_all(name, "ä", "ae"),
-        name = str_replace_all(name, "ö", "oe"),
-        name = str_replace_all(name, "ü", "ue"),
+        name = stringr::str_replace_all(name, "ß", "ss"),
+        name = stringr::str_replace_all(name, "ä", "ae"),
+        name = stringr::str_replace_all(name, "ö", "oe"),
+        name = stringr::str_replace_all(name, "ü", "ue"),
+        type = dplyr::case_when(
+          stringr::str_detect(name, "^U") ~ "U-Bahn",
+          stringr::str_detect(name, "^S") ~ "S-Bahn",
+          TRUE ~ "unknown"
+        )
       ) %>%
       sf::st_intersection(sf_districts)
   )
