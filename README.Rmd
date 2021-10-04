@@ -115,7 +115,7 @@ You can also use the `mapping` functionality of ggplot2 to address variables fro
 map + 
   geom_sf(data = sf_metro, aes(color = type), size = 2) +
   scale_color_discrete(type = c("dodgerblue", "forestgreen"), 
-                     name = NULL) +
+                       name = NULL) +
   guides(color = guide_legend(direction = "horizontal",
                               title.position = "top", 
                               title.hjust = .5))

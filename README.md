@@ -133,7 +133,7 @@ variables from your data set:
 map + 
   geom_sf(data = sf_metro, aes(color = type), size = 2) +
   scale_color_discrete(type = c("dodgerblue", "forestgreen"), 
-                     name = NULL) +
+                       name = NULL) +
   guides(color = guide_legend(direction = "horizontal",
                               title.position = "top", 
                               title.hjust = .5))
@@ -199,11 +199,11 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-10-04 16:42:30 CEST"
+#> [1] "2021-10-04 16:45:04 CEST"
 git2r::repository()
 #> Local:    main U:/GUEST/Abteilung6/People/Scherer_Cedric/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [5eb6523] 2021-10-04: add hex logo
+#> Head:     [700b865] 2021-10-04: update readme
 sessionInfo()
 #> R version 4.1.1 (2021-08-10)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
