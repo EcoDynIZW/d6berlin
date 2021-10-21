@@ -85,16 +85,13 @@ globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
 
   ## A small negative buffer is necessary to avoid polygons still disappearing
   ## in a few pathological cases ...............................................
-  ## Comment Cédric: Doesn'twork anymore, returns empty object. Butworks also without this bit.
-  # visible <- suppressMessages(suppressWarnings(
-  #   sf::st_intersection(sf::st_make_valid(mini_world),
-  #                       sf::st_buffer(circle_longlat, -.1)) %>%
-  #   sf::st_transform(crs = ortho)
-  # ))
-
+  ## Comment Cédric: Doesn't work with -.09 anymore, returns empty object.
+  ##                 But works also without the buffer, so using 0 here to
+  ##                 return the same type of object.
   visible <- suppressMessages(suppressWarnings(
-      sf::st_make_valid(mini_world) %>%
-      sf::st_transform(crs = ortho)
+    sf::st_intersection(sf::st_make_valid(mini_world),
+                        sf::st_buffer(circle_longlat, 0)) %>%
+    sf::st_transform(crs = ortho)
   ))
 
   ## Get reason why polygons are broken ........................................
