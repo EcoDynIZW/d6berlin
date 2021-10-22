@@ -21,10 +21,18 @@
 #' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
 "sf_water"
 
+#' Berlin roads (WGS 84)
+#'
+#' A shape file containing all roads in Berlin. Contains only those classes that
+#' are used by cars (i.e. excludes roads of class footway, steps, bridleway,
+#' path, pedestrian, and cycleway)
+#'
+#' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
+"sf_roads"
+
 #' Berlin metro station (WGS 84)
 #'
-#' A shape file containing the locations of metro stations in Berlin. Used as
-#'example dataset to illustrate how to add points to the template basemap.
+#' A shape file containing the locations of metro stations in Berlin.
 #'
 #' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
 "sf_metro"

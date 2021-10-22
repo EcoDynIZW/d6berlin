@@ -5,7 +5,7 @@
 \alias{sf_metro}
 \title{Berlin metro station (WGS 84)}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 260 rows and 11 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 260 rows and 12 columns.
 }
 \source{
 \url{https://download.geofabrik.de/europe/germany/berlin.html}
@@ -14,7 +14,6 @@ An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{dat
 sf_metro
 }
 \description{
-A shape file containing the locations of metro stations in Berlin. Used as
-example dataset to illustrate how to add points to the template basemap.
+A shape file containing the locations of metro stations in Berlin.
 }
 \keyword{datasets}
