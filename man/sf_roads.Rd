@@ -16,6 +16,8 @@ sf_roads
 \description{
 A shape file containing all roads in Berlin. Contains only those classes that
 are used by cars (i.e. excludes roads of class footway, steps, bridleway,
-path, pedestrian, and cycleway)
+path, pedestrian, and cycleway as well as roads that are unclassified or of
+unknown class; includes tracks of all grades; run \code{unique(sf_roads$fclass)}
+to seeinspect all classes contained).
 }
 \keyword{datasets}

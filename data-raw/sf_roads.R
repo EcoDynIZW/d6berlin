@@ -19,7 +19,8 @@ sf_roads <-
       ## remove paths not used by cars
       filter(
         !fclass %in% c("footway", "steps", "bridleway",
-                       "path", "pedestrian", "cycleway")
+                       "path", "pedestrian", "cycleway",
+                       "unknown", "unclassified")
       ) %>%
       dplyr::mutate(
         name = stringr::str_replace_all(name, "ß", "ss"),

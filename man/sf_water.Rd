@@ -5,7 +5,7 @@
 \alias{sf_water}
 \title{Berlin waterways (WGS 84)}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 2009 rows and 11 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1716 rows and 11 columns.
 }
 \source{
 \url{https://download.geofabrik.de/europe/germany/berlin.html}

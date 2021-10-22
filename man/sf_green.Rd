@@ -5,7 +5,7 @@
 \alias{sf_green}
 \title{Berlin green spaces (WGS 84)}
 \format{
-An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 13870 rows and 11 columns.
+An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 15167 rows and 11 columns.
 }
 \source{
 \url{https://download.geofabrik.de/europe/germany/berlin.html}
