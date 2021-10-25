@@ -3,13 +3,9 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATHS ----------------------------------------------------------------
-json_file <- here::here("data-raw", "geo-raw", "bezirksgrenzen.geojson")
 shp_path  <- here::here("data-raw", "geo-raw", "berlin_shapes")
 
 ## PREPARE DATA --------------------------------------------------------------
-## Berlin districts (WGS 84)
-## Source: Technologiestiftung Berlin
-sf_districts <- sf::read_sf(json_file)
 
 ## Berlin roads (WGS 84)
 sf_roads <-
@@ -23,13 +19,17 @@ sf_roads <-
                        "unknown", "unclassified")
       ) %>%
       dplyr::mutate(
+        osm_id = as.factor(osm_id),
+        bridge = as.logical(bridge),
+        tunnel = as.logical(tunnel),
+        oneway = ifelse(oneway == "F", FALSE, TRUE),
         name = stringr::str_replace_all(name, "ß", "ss"),
         name = stringr::str_replace_all(name, "ä", "ae"),
         name = stringr::str_replace_all(name, "ö", "oe"),
         name = stringr::str_replace_all(name, "ü", "ue")
       ) %>%
-      dplyr::select(code, fclass, name, oneway, maxspeed, bridge, tunnel) %>%
-      sf::st_intersection(sf_districts)
+      dplyr::select(osm_id, code, fclass, name, oneway, maxspeed, bridge, tunnel) %>%
+      sf::st_intersection(d6berlin::sf_districts)
   )
 
 usethis::use_data(sf_roads, overwrite = TRUE)

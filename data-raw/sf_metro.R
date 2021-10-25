@@ -3,13 +3,9 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATHS ----------------------------------------------------------------
-json_file <- here::here("data-raw", "geo-raw", "bezirksgrenzen.geojson")
 shp_path  <- here::here("data-raw", "geo-raw", "berlin_shapes")
 
 ## PREPARE DATA --------------------------------------------------------------
-## Berlin districts (WGS 84)
-## Source: Technologiestiftung Berlin
-sf_districts <- sf::read_sf(json_file)
 
 ## Berlin metro stations (WGS 84)
 sf_metro <-
@@ -21,6 +17,7 @@ sf_metro <-
         stringr::str_detect(name, "^U |^S |^S+U |^U+S")
       ) %>%
       dplyr::mutate(
+        osm_id = as.factor(osm_id),
         name = stringr::str_replace_all(name, "ß", "ss"),
         name = stringr::str_replace_all(name, "ä", "ae"),
         name = stringr::str_replace_all(name, "ö", "oe"),
@@ -31,7 +28,7 @@ sf_metro <-
           TRUE ~ "unknown"
         )
       ) %>%
-      sf::st_intersection(sf_districts)
+      sf::st_intersection(d6berlin::sf_districts)
   )
 
 usethis::use_data(sf_metro, overwrite = TRUE)

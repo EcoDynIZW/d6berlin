@@ -3,7 +3,7 @@
 \docType{data}
 \name{sf_berlin}
 \alias{sf_berlin}
-\title{Berlin districts (WGS 84)}
+\title{Berlin shape (WGS 84)}
 \format{
 An object of class \code{sfc_MULTIPOLYGON} (inherits from \code{sfc}) of length 1.
 }
@@ -14,6 +14,6 @@ An object of class \code{sfc_MULTIPOLYGON} (inherits from \code{sfc}) of length 
 sf_berlin
 }
 \description{
-A shape file containing the shape of Berlin.
+An sf object containing the multipolygon of Berlin.
 }
 \keyword{datasets}
