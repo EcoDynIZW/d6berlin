@@ -1,6 +1,3 @@
-## P
-
-
 #' Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)
 #'
 #' @param bg A Boolean. Should a background be added to the globe?
