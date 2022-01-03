@@ -205,11 +205,11 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2022-01-03 11:29:02 CET"
+#> [1] "2022-01-03 14:22:40 CET"
 git2r::repository()
 #> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [7459dea] 2021-10-25: add new data sets / update data sets / update metadata
+#> Head:     [a109a81] 2022-01-03: fix name railways, add data sets to readme
 sessionInfo()
 #> R version 4.1.2 (2021-11-01)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)

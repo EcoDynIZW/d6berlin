@@ -96,7 +96,7 @@ ggplot(d6berlin::sf_water) + geom_sf(color = "transparent", fill = "grey60") + g
 
 ## Adding Locations to the Map
 
-Let's assume you have recorded some animal locations or you want to plot another information on to of this plot. For example, let's visualize the Berlin metro stations by adding `geom_sf(data = x)` to the template map:
+Let's assume you have recorded some animal locations or you want to plot another information on top of our base map. For example, let's visualize the Berlin metro stations by adding `geom_sf(data = x)` to the `map` object:
 
 ```{r example-add-points}
 library(ggplot2)
