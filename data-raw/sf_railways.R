@@ -8,7 +8,7 @@ shp_path  <- here::here("data-raw", "geo-raw", "berlin_shapes")
 ## PREPARE DATA --------------------------------------------------------------
 
 ## Berlin roads (WGS 84)
-sf_raleways <-
+sf_railways <-
   suppressMessages(
     sf::read_sf(dsn = glue::glue("{shp_path}/gis_osm_railways_free_1.shp"),
                 layer = "gis_osm_railways_free_1") %>%
@@ -25,4 +25,4 @@ sf_raleways <-
       sf::st_intersection(d6berlin::sf_districts)
   )
 
-usethis::use_data(sf_raleways, overwrite = TRUE)
+usethis::use_data(sf_railways, overwrite = TRUE)

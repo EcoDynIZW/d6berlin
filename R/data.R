@@ -83,9 +83,9 @@
 #' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
 "sf_roads"
 
-#' Berlin raleways (WGS 84)
+#' Berlin railways (WGS 84)
 #'
-#' An sf object containing all raleways in Berlin. The variables are as follows:
+#' An sf object containing all railways in Berlin. The variables are as follows:
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature as factor.
@@ -102,7 +102,7 @@
 #' }
 #'
 #' @source \url{https://download.geofabrik.de/europe/germany/berlin.html}
-"sf_raleways"
+"sf_railways"
 
 #' Berlin metro station (WGS 84)
 #'

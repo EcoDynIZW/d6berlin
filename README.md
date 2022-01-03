@@ -8,10 +8,10 @@
 
 > The `d6berlin` package aims to provide template maps for Berlin with
 > carefully chosen and aesthetically pleasing defaults. Template maps
-> include green spaces, imperviousness levels, water boders, district
-> borders, and roads plus the utility to add a globe with locator pin, a
-> scalebar, and a caption to include the data sources. All objects are
-> returned as `ggplot` objects.
+> include green spaces, imperviousness levels, water bodies, district
+> borders, roads, and railways, plus the utility to add a globe with
+> locator pin, a scalebar, and a caption to include the data sources.
+> All objects are returned as `ggplot` objects.
 
 <br>
 
@@ -28,7 +28,7 @@ install.packages("devtools")
 devtools::install_github("EcoDynIZW/d6berlin")
 ```
 
-(Note: If you are asked if you want to update other packgaes either
+(Note: If you are asked if you want to update other packages either
 press “No” (option 3) and continue or update the packages before running
 the install command again.)
 
@@ -45,8 +45,8 @@ Berlin. The imperviousness raster data was derived from [Geoportal
 Berlin (FIS-Broker)]() with a resolution of 10m. The vector data on
 green spaces was collected from data provided by the [OpenStreetMap
 Contributors](https://www.openstreetmap.org/). The green spaces consist
-of a mixture of landuse and natural categories (namely “forest”,
-“grass”, “meadow”, “nature\_reserve”, “scrub”, “heath”, “beach”,
+of a mixture of land use and natural categories (namely “forest”,
+“grass”, “meadow”, “nature_reserve”, “scrub”, “heath”, “beach”,
 “cliff”).
 
 The map is projected in **EPSG 4326 (WGS84)**.
@@ -77,7 +77,13 @@ the previous example.)
 
 <br>
 
-# 
+## Berlin Data Sets
+
+The package contains several data sets for Berlin. All of them start
+with `sf_`, e.g. `d6berlin::sf_roads`. Here is a full overview of the
+data sets that are available:
+
+<img src="man/figures/README-datasets-1.png" width="33%" /><img src="man/figures/README-datasets-2.png" width="33%" /><img src="man/figures/README-datasets-3.png" width="33%" /><img src="man/figures/README-datasets-4.png" width="33%" /><img src="man/figures/README-datasets-5.png" width="33%" /><img src="man/figures/README-datasets-6.png" width="33%" /><img src="man/figures/README-datasets-7.png" width="33%" />
 
 <br>
 
@@ -199,15 +205,15 @@ Session Info
 
 ``` r
 Sys.time()
-#> [1] "2021-10-04 16:45:04 CEST"
+#> [1] "2022-01-03 11:29:02 CET"
 git2r::repository()
-#> Local:    main U:/GUEST/Abteilung6/People/Scherer_Cedric/d6berlin
+#> Local:    main C:/Users/DataVizard/PopDynIZW Dropbox/GeoData/d6berlin
 #> Remote:   main @ origin (https://github.com/EcoDynIZW/d6berlin.git)
-#> Head:     [700b865] 2021-10-04: update readme
+#> Head:     [7459dea] 2021-10-25: add new data sets / update data sets / update metadata
 sessionInfo()
-#> R version 4.1.1 (2021-08-10)
+#> R version 4.1.2 (2021-11-01)
 #> Platform: x86_64-w64-mingw32/x64 (64-bit)
-#> Running under: Windows 10 x64 (build 19041)
+#> Running under: Windows 10 x64 (build 19043)
 #> 
 #> Matrix products: default
 #> 
@@ -215,39 +221,41 @@ sessionInfo()
 #> [1] LC_COLLATE=German_Germany.1252  LC_CTYPE=German_Germany.1252   
 #> [3] LC_MONETARY=German_Germany.1252 LC_NUMERIC=C                   
 #> [5] LC_TIME=German_Germany.1252    
+#> system code page: 65001
 #> 
 #> attached base packages:
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] systemfonts_1.0.2   stringr_1.4.0       dplyr_1.0.7        
-#> [4] sf_1.0-2            ggplot2_3.3.5       d6berlin_0.0.0.9000
+#> [1] systemfonts_1.0.3   stringr_1.4.0       dplyr_1.0.7        
+#> [4] sf_1.0-5            ggplot2_3.3.5       d6berlin_0.0.0.9000
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] Rcpp_1.0.7          rnaturalearth_0.1.0 lattice_0.20-44    
-#>  [4] png_0.1-7           class_7.3-19        assertthat_0.2.1   
-#>  [7] digest_0.6.27       utf8_1.2.2          R6_2.5.1           
-#> [10] stats4_4.1.1        evaluate_0.14       e1071_1.7-9        
-#> [13] highr_0.9           pillar_1.6.2        rlang_0.4.11       
-#> [16] raster_3.4-13       rmarkdown_2.11      textshaping_0.3.5  
-#> [19] labeling_0.4.2      webshot_0.5.2       rgdal_1.5-27       
-#> [22] htmlwidgets_1.5.4   munsell_0.5.0       proxy_0.4-26       
-#> [25] compiler_4.1.1      xfun_0.26           pkgconfig_2.0.3    
-#> [28] base64enc_0.1-3     rgeos_0.5-7         htmltools_0.5.2    
-#> [31] tidyselect_1.1.1    tibble_3.1.4        codetools_0.2-18   
-#> [34] mapview_2.10.0      fansi_0.5.0         withr_2.4.2        
-#> [37] crayon_1.4.1        wk_0.5.0            grid_4.1.1         
-#> [40] satellite_1.0.2     lwgeom_0.2-7        gtable_0.3.0       
-#> [43] lifecycle_1.0.0     DBI_1.1.1           git2r_0.28.0       
-#> [46] magrittr_2.0.1      units_0.7-2         scales_1.1.1       
-#> [49] KernSmooth_2.23-20  stringi_1.7.4       farver_2.1.0       
-#> [52] leaflet_2.0.4.1     sp_1.4-5            ellipsis_0.3.2     
-#> [55] ragg_1.1.3          generics_0.1.0      vctrs_0.3.8        
-#> [58] s2_1.0.6            tools_4.1.1         ggspatial_1.1.5    
-#> [61] leafem_0.1.6        glue_1.4.2          purrr_0.3.4        
-#> [64] crosstalk_1.1.1     abind_1.4-5         parallel_4.1.1     
-#> [67] fastmap_1.1.0       yaml_2.2.1          colorspace_2.0-2   
-#> [70] stars_0.5-3         classInt_0.4-3      knitr_1.34
+#>  [1] rnaturalearth_0.1.0 assertthat_0.2.1    sp_1.4-5           
+#>  [4] highr_0.9           stats4_4.1.2        yaml_2.2.1         
+#>  [7] pillar_1.6.4        lattice_0.20-45     glue_1.4.2         
+#> [10] digest_0.6.29       colorspace_2.0-2    htmltools_0.5.2    
+#> [13] pkgconfig_2.0.3     ggspatial_1.1.5     raster_3.5-2       
+#> [16] stars_0.5-5         s2_1.0.7            purrr_0.3.4        
+#> [19] scales_1.1.1        webshot_0.5.2       terra_1.4-11       
+#> [22] satellite_1.0.4     git2r_0.29.0        tibble_3.1.6       
+#> [25] proxy_0.4-26        generics_0.1.1      farver_2.1.0       
+#> [28] ellipsis_0.3.2      withr_2.4.3         mapview_2.10.0     
+#> [31] magrittr_2.0.1      crayon_1.4.2        evaluate_0.14      
+#> [34] fansi_0.5.0         lwgeom_0.2-8        class_7.3-19       
+#> [37] textshaping_0.3.6   tools_4.1.2         lifecycle_1.0.1    
+#> [40] munsell_0.5.0       compiler_4.1.2      e1071_1.7-9        
+#> [43] rlang_0.4.12        classInt_0.4-3      units_0.7-2        
+#> [46] grid_4.1.2          htmlwidgets_1.5.4   crosstalk_1.2.0    
+#> [49] leafem_0.1.6        base64enc_0.1-3     labeling_0.4.2     
+#> [52] rmarkdown_2.11      wk_0.5.0            gtable_0.3.0       
+#> [55] codetools_0.2-18    abind_1.4-5         DBI_1.1.2          
+#> [58] R6_2.5.1            knitr_1.36          rgdal_1.5-27       
+#> [61] fastmap_1.1.0       rgeos_0.5-8         utf8_1.2.2         
+#> [64] ragg_1.1.3          KernSmooth_2.23-20  stringi_1.7.5      
+#> [67] parallel_4.1.2      Rcpp_1.0.7          vctrs_0.3.8        
+#> [70] png_0.1-7           leaflet_2.0.4.1     tidyselect_1.1.1   
+#> [73] xfun_0.27
 ```
 
 </details>

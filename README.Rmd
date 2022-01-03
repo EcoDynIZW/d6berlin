@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water boders, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
+> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodies, district borders, roads, and railways, plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
 
 <br>
 
@@ -40,7 +40,7 @@ install.packages("devtools")
 devtools::install_github("EcoDynIZW/d6berlin")
 ```
 
-(Note: If you are asked if you want to update other packgaes either press "No" (option 3) and continue or update the packages before running the install command again.)
+(Note: If you are asked if you want to update other packages either press "No" (option 3) and continue or update the packages before running the install command again.)
 
 <br>
 
@@ -50,7 +50,7 @@ devtools::install_github("EcoDynIZW/d6berlin")
 
 ## A Basic Template Map of Imperviousness
 
-The basic template map shows levels of imperviousness and green areas in Berlin. The imperviousness raster data was derived from [Geoportal Berlin (FIS-Broker)]() with a resolution of 10m. The vector data on green spaces was collected from data provided by the [OpenStreetMap Contributors](https://www.openstreetmap.org/). The green spaces consist of a mixture of landuse and natural categories (namely "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", "cliff").
+The basic template map shows levels of imperviousness and green areas in Berlin. The imperviousness raster data was derived from [Geoportal Berlin (FIS-Broker)]() with a resolution of 10m. The vector data on green spaces was collected from data provided by the [OpenStreetMap Contributors](https://www.openstreetmap.org/). The green spaces consist of a mixture of land use and natural categories (namely "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", "cliff").
 
 The map is projected in **EPSG 4326 (WGS84)**.
 
@@ -71,9 +71,28 @@ If you think the legend is absolute, there is also an option called `"none"`. (T
 
 <br>
 
-#
+## Berlin Data Sets
+
+The package contains several data sets for Berlin. All of them start with `sf_`, e.g. `d6berlin::sf_roads`. Here is a full overview of the data sets that are available:
+
+```{r datasets, echo=FALSE, fig.show="hold", out.width="33%"}
+library(ggplot2)
+
+theme_map <- theme_void() + 
+  theme(plot.title = element_text(size = 45, hjust = .5, face = "bold", family = "Roboto Mono"),
+        plot.margin = margin(b = 12))
+
+ggplot(d6berlin::sf_berlin) + geom_sf() + ggtitle("d6berlin::sf_berlin") + theme_map
+ggplot(d6berlin::sf_districts) + geom_sf() + ggtitle("d6berlin::sf_districts") + theme_map
+ggplot(d6berlin::sf_green) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_green") + theme_map
+ggplot(d6berlin::sf_metro) + geom_sf() + ggtitle("d6berlin::sf_metro") + theme_map
+ggplot(d6berlin::sf_railways) + geom_sf() + ggtitle("d6berlin::sf_railways") + theme_map
+ggplot(d6berlin::sf_roads) + geom_sf() + ggtitle("d6berlin::sf_roads") + theme_map
+ggplot(d6berlin::sf_water) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_water") + theme_map
+```
 
 <br>
+
 
 ## Adding Locations to the Map
 
