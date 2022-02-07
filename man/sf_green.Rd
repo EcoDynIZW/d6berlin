@@ -14,7 +14,7 @@ An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{dat
 sf_green
 }
 \description{
-n sf object containing the shape of all green spaces (defined as natural
+An sf object containing the shape of all green spaces (defined as natural
 areas and landuse categories "forest", "grass", "meadow", "nature_reserve",
 "scrub", "heath", "beach", and "cliff") in Berlin. The variables are as follows:
 }
@@ -22,7 +22,9 @@ areas and landuse categories "forest", "grass", "meadow", "nature_reserve",
 \itemize{
 \item osm_id. OpenStreetMap id for this feature as factor.
 \item code. 4 digit code (between 1000 and 9999) defining the class of this feature.
-\item fclass. Class name of this feature.
+\item fclass. Class name of this feature (here class of green space, i.e.
+"forest", "grass", "meadow", "nature_reserve", "scrub",
+"heath", "beach", or "cliff").
 \item name. Name of this feature (here name of the green area).
 \item district_name. Name of the Berlin district this feature is located in.
 \item district_id. 3 digit code (as character) of the district this feature is located in.

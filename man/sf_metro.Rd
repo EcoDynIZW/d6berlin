@@ -8,7 +8,8 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 260 rows and 9 columns.
 }
 \source{
-\url{https://download.geofabrik.de/europe/germany/berlin.html}
+Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.\n
+Please #'         give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
 sf_metro
@@ -20,9 +21,9 @@ An sf object containing the locations of metro stations in Berlin. The variables
 \itemize{
 \item osm_id. OpenStreetMap id for this feature.
 \item code. 4 digit code (between 1000 and 9999) defining the class of this feature.
-\item fclass. Class name of this feature.
+\item fclass. Class name of this feature (always of class "railway_station").
 \item name. Name of this feature (here name of the water body).
-\item type. Type of train station, either S-Bahn or U-Bahhn.
+\item type. Type of train station, either S-Bahn or U-Bahn.
 \item district_name. Name of the Berlin district this feature is located in.
 \item district_id. 3 digit code (as character) of the district this feature is located in.
 \item district_key. Combined key for the district this feature is located in.

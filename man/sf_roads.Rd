@@ -24,7 +24,8 @@ to seeinspect all classes contained). The variables are as follows:
 \itemize{
 \item osm_id. OpenStreetMap id for this feature as factor.
 \item code. 4 digit code (between 1000 and 9999) defining the class of this feature.
-\item fclass. Class name of this feature.
+\item fclass. Class name of this feature (here class of road, e.g. "primary",
+"living_street", or "residential")
 \item name. Name of this feature (here name of the road).
 \item oneway. Logical, TRUE in case this feature has a access restriction for cars.
 \item maxspeed. Maximum speed on this feature.

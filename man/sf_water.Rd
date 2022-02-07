@@ -20,7 +20,8 @@ An sf object containing the shape of all waterways found in Berlin. The variable
 \itemize{
 \item osm_id. OpenStreetMap id for this feature as factor.
 \item code. 4 digit code (between 1000 and 9999) defining the class of this feature.
-\item fclass. Class name of this feature.
+\item fclass. Class name of this feature (here class of water bodies, i.e. "water",
+"wetland", "riverbank" or "reservoir").
 \item name. Name of this feature (here name of the water body).
 \item district_name. Name of the Berlin district this feature is located in.
 \item district_id. 3 digit code (as character) of the district this feature is located in.

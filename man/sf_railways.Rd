@@ -20,7 +20,8 @@ An sf object containing all railways in Berlin. The variables are as follows:
 \itemize{
 \item osm_id. OpenStreetMap id for this feature as factor.
 \item code. 4 digit code (between 1000 and 9999) defining the class of this feature.
-\item fclass. Class name of this feature.
+\item fclass. Class name of this feature (here class of railway, i.e. "rail",
+"light_rail", "subway", "tram", "miniature_railway" or "narrow_gauge".
 \item name. Name of this feature (here name of the water body).
 \item layer. Describes the vertical relationship between crossing or overlapping features.
 \item bridge. Logical. TRUE in case this feature is a bridge.
