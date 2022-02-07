@@ -8,7 +8,8 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1716 rows and 8 columns.
 }
 \source{
-\url{https://download.geofabrik.de/europe/germany/berlin.html}
+Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+Please give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
 sf_water

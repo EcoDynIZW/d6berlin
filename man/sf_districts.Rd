@@ -8,7 +8,7 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 12 rows and 4 columns.
 }
 \source{
-\url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}
+Data downloaded from \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
 }
 \usage{
 sf_districts

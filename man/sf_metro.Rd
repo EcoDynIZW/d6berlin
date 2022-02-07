@@ -8,8 +8,8 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 260 rows and 9 columns.
 }
 \source{
-Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.\n
-Please #'         give credit by stating (c) OpenStreetMap contributors when using the data.
+Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+Please give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
 sf_metro
