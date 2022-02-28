@@ -55,9 +55,9 @@ library(d6berlin)
 
 <br>
 
-## Spatial Data Sets
+## Berlin Data Sets
 
-The following data sets are stored as *simple feature objects* and directly accessible:
+The package contains several data sets for Berlin. All of them start with `sf_`, e.g. `d6berlin::sf_roads`. Here is a full overview of the data sets that are stored as *simple feature objects* and directly accessible:
 
 ```{text}
 sf_berlin      -- Berlin border
@@ -69,7 +69,23 @@ sf_roads       -- motorways and streets
 sf_water       -- water ways and bodies
 ```
 
-More information about each data set is available in the help: 
+```{r datasets, echo=FALSE, fig.show="hold", out.width="33%"}
+library(ggplot2)
+
+theme_map <- theme_void() + 
+  theme(plot.title = element_text(size = 45, hjust = .5, face = "bold", family = "Roboto Mono"),
+        plot.margin = margin(b = 12))
+
+ggplot(d6berlin::sf_berlin) + geom_sf() + ggtitle("d6berlin::sf_berlin") + theme_map
+ggplot(d6berlin::sf_districts) + geom_sf() + ggtitle("d6berlin::sf_districts") + theme_map
+ggplot(d6berlin::sf_green) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_green") + theme_map
+ggplot(d6berlin::sf_metro) + geom_sf() + ggtitle("d6berlin::sf_metro") + theme_map
+ggplot(d6berlin::sf_railways) + geom_sf() + ggtitle("d6berlin::sf_railways") + theme_map
+ggplot(d6berlin::sf_roads) + geom_sf() + ggtitle("d6berlin::sf_roads") + theme_map
+ggplot(d6berlin::sf_water) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_water") + theme_map
+```
+
+All spatial data sets are projected in **EPSG 4326 (WGS84)**. More information about each data set is available in the help: 
 
 ```{r filter-spatial-data, eval=FALSE}
 ?sf_green
@@ -108,28 +124,6 @@ base_map_imp(color_intensity = 1, globe = TRUE, resolution = 500,
 ```
 
 If you think the legend is absolute, there is also an option called `"none"`. (The default is `"bottom"`. You can also use of the predefined setting `"top"` as illustrated below or a custom position as shown in the previous example.)
-
-<br>
-
-## Berlin Data Sets
-
-The package contains several data sets for Berlin. All of them start with `sf_`, e.g. `d6berlin::sf_roads`. Here is a full overview of the data sets that are available:
-
-```{r datasets, echo=FALSE, fig.show="hold", out.width="33%"}
-library(ggplot2)
-
-theme_map <- theme_void() + 
-  theme(plot.title = element_text(size = 45, hjust = .5, face = "bold", family = "Roboto Mono"),
-        plot.margin = margin(b = 12))
-
-ggplot(d6berlin::sf_berlin) + geom_sf() + ggtitle("d6berlin::sf_berlin") + theme_map
-ggplot(d6berlin::sf_districts) + geom_sf() + ggtitle("d6berlin::sf_districts") + theme_map
-ggplot(d6berlin::sf_green) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_green") + theme_map
-ggplot(d6berlin::sf_metro) + geom_sf() + ggtitle("d6berlin::sf_metro") + theme_map
-ggplot(d6berlin::sf_railways) + geom_sf() + ggtitle("d6berlin::sf_railways") + theme_map
-ggplot(d6berlin::sf_roads) + geom_sf() + ggtitle("d6berlin::sf_roads") + theme_map
-ggplot(d6berlin::sf_water) + geom_sf(color = "transparent", fill = "grey60") + ggtitle("d6berlin::sf_water") + theme_map
-```
 
 <br>
 
