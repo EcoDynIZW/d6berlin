@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-> The `d6berlin` package aims to provide template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodies, district borders, roads, and railways, plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
+> The `d6berlin` package aims to provide spatial data and template maps for Berlin. The data sets include green spaces, water bodies, district borders, raleways and more. A template map of imperviousness across Berlin with carefully chosen and aesthetically pleasing default is included to serve as a base map to visualize spatial data.
 
 <br>
 
@@ -42,7 +42,49 @@ devtools::install_github("EcoDynIZW/d6berlin")
 
 (Note: If you are asked if you want to update other packages either press "No" (option 3) and continue or update the packages before running the install command again.)
 
+Afterwards, load the functionality and data of the package in each session:
+
+```{r library}
+library(d6berlin)
+```
+
+
 <br>
+
+#
+
+<br>
+
+## Spatial Data Sets
+
+The following data sets are stored as *simple feature objects* and directly accessible:
+
+```{text}
+sf_berlin      -- Berlin border
+sf_districts   -- district borders
+sf_green       -- green spaces
+sf_metro       -- U- and S-train stations
+sf_railways    -- railroad lines
+sf_roads       -- motorways and streets
+sf_water       -- water ways and bodies
+```
+
+More information about each data set is available in the help: 
+
+```{r filter-spatial-data, eval=FALSE}
+?sf_green
+```
+
+> An sf object containing the shape of all green spaces (defined as natural areas and landuse categories "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", and "cliff") in Berlin. 
+
+Furthermore, you can work with the spatial data as you usually do:
+
+```{r working-with-data}
+unique(sf_green$fclass)
+
+sf_forests <- subset(sf_green, fclass == "forest")
+head(sf_forests)
+```
 
 #
 
@@ -50,13 +92,11 @@ devtools::install_github("EcoDynIZW/d6berlin")
 
 ## A Basic Template Map of Imperviousness
 
-The basic template map shows levels of imperviousness and green areas in Berlin. The imperviousness raster data was derived from [Geoportal Berlin (FIS-Broker)]() with a resolution of 10m. The vector data on green spaces was collected from data provided by the [OpenStreetMap Contributors](https://www.openstreetmap.org/). The green spaces consist of a mixture of land use and natural categories (namely "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", "cliff").
+The basic template map shows levels of imperviousness and green areas in Berlin. The imperviousness raster data was derived from [Geoportal Berlin (FIS-Broker)](https://www.stadtentwicklung.berlin.de/geoinformation/fis-broker/) with a resolution of 10m. The vector data on green spaces was collected from data provided by the [OpenStreetMap Contributors](https://www.openstreetmap.org/). The green spaces consist of a mixture of land use and natural categories (namely "forest", "grass", "meadow", "nature_reserve", "scrub", "heath", "beach", "cliff").
 
 The map is projected in **EPSG 4326 (WGS84)**.
 
 ```{r example-basic}
-library(d6berlin)
-
 base_map_imp()
 ```
 

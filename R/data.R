@@ -7,7 +7,7 @@
 
 #' Berlin districts (WGS 84)
 #'
-#' An sf object containing the12 districts of Berlin as multipolygons. The variables are as follows:
+#' An sf object containing the12 districts of Berlin as multipolygons.
 #'
 #' \itemize{
 #'   \item district_name. Name of the Berlin district this feature is located in.
@@ -23,7 +23,7 @@
 #'
 #' An sf object containing the shape of all green spaces (defined as natural
 #' areas and landuse categories "forest", "grass", "meadow", "nature_reserve",
-#' "scrub", "heath", "beach", and "cliff") in Berlin. The variables are as follows:
+#' "scrub", "heath", "beach", and "cliff") in Berlin.
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature as factor.
@@ -42,9 +42,9 @@
 #'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_green"
 
-#' Berlin waterways (WGS 84)
+#' Berlin water bodies (WGS 84)
 #'
-#' An sf object containing the shape of all waterways found in Berlin. The variables are as follows:
+#' An sf object containing the shape of all water bodies and ways found in Berlin.
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature as factor.
@@ -68,7 +68,7 @@
 #' are used by cars (i.e. excludes roads of class footway, steps, bridleway,
 #' path, pedestrian, and cycleway as well as roads that are unclassified or of
 #' unknown class; includes tracks of all grades; run `unique(sf_roads$fclass)`
-#' to seeinspect all classes contained). The variables are as follows:
+#' to seeinspect all classes contained).
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature as factor.
@@ -92,7 +92,7 @@
 
 #' Berlin railways (WGS 84)
 #'
-#' An sf object containing all railways in Berlin. The variables are as follows:
+#' An sf object containing all railways in Berlin.
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature as factor.
@@ -115,7 +115,7 @@
 
 #' Berlin metro station (WGS 84)
 #'
-#' An sf object containing the locations of metro stations in Berlin. The variables are as follows:
+#' An sf object containing the locations of metro stations in Berlin.
 #'
 #' \itemize{
 #'   \item osm_id. OpenStreetMap id for this feature.
