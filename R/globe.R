@@ -19,7 +19,8 @@
 #' @importFrom magrittr %>%
 #'
 #' @export
-globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8", col_pin = "black", size_pin = 1.2, bg = TRUE) {
+globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8",
+                  col_pin = "black", size_pin = 1.2, bg = TRUE) {
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
@@ -32,7 +33,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   lat <- center[2]
 
   ## for Berlin adjust latitude, otherwise use center[2] as provided to keep it generic
-  if(center == c(13.4050, 52.5200)) { lat <- 32 }
+  if(identical(center, c(13.4050, 52.5200))) { lat <- 32 }
 
   ortho <- paste0('+proj=ortho +lat_0=', lat, ' +lon_0=', lon,
                   ' +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs')
@@ -152,7 +153,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   globe <- globe +
     ggplot2::geom_sf(data = circle, fill = col_water, alpha = .5) +
     ggplot2::geom_sf(data = sf::st_collection_extract(visible),
-                     fill = col_earth, color = col_earth, size = .4) +
+                     fill = col_earth, color = col_earth, lwd = .3) +
     ggplot2::geom_sf(data = sf_berlin_loc, color = col_pin, size = size_pin,
                      shape = 1, stroke = size_pin) +
     ggplot2::geom_sf(data = circle, color = "grey60", fill = NA, size = .5) +
