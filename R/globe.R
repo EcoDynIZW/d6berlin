@@ -4,7 +4,8 @@
 #'               and for the locator circle.
 #' @param col_water A hex code. Color used for oceans.
 #' @param col_earth A hex code. Color used for continents.
-#' @param size_pin A positive number indicating the symbol size for the locator circle.
+#' @param size_pin A positive number indicating the symbol size and stroke of
+#'                 the locator circle.
 #' @param bg A Boolean. Should a background be added to the globe?
 #'
 #' @return A ggplot object containing a locator globe with pin.
@@ -17,7 +18,7 @@
 #' @importFrom magrittr %>%
 #'
 #' @export
-globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8", size_pin = 1.2, bg = FALSE) {
+globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8", size_pin = 1.2, bg = TRUE) {
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
@@ -150,9 +151,9 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   globe <- globe +
     ggplot2::geom_sf(data = circle, fill = col_water, alpha = .5) +
     ggplot2::geom_sf(data = sf::st_collection_extract(visible),
-                     fill = col_earth, color = col_earth, size = .2) +
+                     fill = col_earth, color = col_earth, size = .4) +
     ggplot2::geom_sf(data = sf_berlin_loc, color = "black", size = size_pin,
-                     shape = 1, stroke = 1.2) +
+                     shape = 1, stroke = size_pin) +
     ggplot2::geom_sf(data = circle, color = "grey60", fill = NA, size = .5) +
     ggplot2::coord_sf(crs = ortho) +
     ggplot2::theme_void()
