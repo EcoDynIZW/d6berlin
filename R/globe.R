@@ -1,8 +1,11 @@
 #' Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)
 #'
-#' @param bg A Boolean. Should a background be added to the globe?
+#' @param center A vector with longitude and latitude used to center the globe
+#'               and for the locator circle.
 #' @param col_water A hex code. Color used for oceans.
 #' @param col_earth A hex code. Color used for continents.
+#' @param size_pin A positive number indicating the symbol size for the locator circle.
+#' @param bg A Boolean. Should a background be added to the globe?
 #'
 #' @return A ggplot object containing a locator globe with pin.
 #'
@@ -14,7 +17,7 @@
 #' @importFrom magrittr %>%
 #'
 #' @export
-globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
+globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8", size_pin = 1.2, bg = FALSE) {
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
@@ -23,8 +26,12 @@ globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
   mini_world <- rnaturalearth::ne_countries(scale = 110, returnclass = "sf")
 
   ## Define the orthographic projection ........................................
-  lat <- 32
-  lon <- 13
+  lon <- center[1]
+  lat <- center[2]
+
+  ## for Berlin adjust latitude, otherwise use center[2] as provided to keep it generic
+  if(center == c(13.4050, 52.5200)) { lat <- 32 }
+
   ortho <- paste0('+proj=ortho +lat_0=', lat, ' +lon_0=', lon,
                   ' +x_0=0 +y_0=0 +a=6371000 +b=6371000 +units=m +no_defs')
 
@@ -127,7 +134,7 @@ globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
 
   ## Berlin location ...........................................................
   sf_berlin_loc <- suppressMessages(
-    sf::st_sfc(sf::st_point(c(13.4050, 52.5200)),
+    sf::st_sfc(sf::st_point(center),
                crs = sf::st_crs(d6berlin::sf_berlin))
   )
 
@@ -143,13 +150,12 @@ globe <- function(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE) {
   globe <- globe +
     ggplot2::geom_sf(data = circle, fill = col_water, alpha = .5) +
     ggplot2::geom_sf(data = sf::st_collection_extract(visible),
-                     fill = col_earth, color = NA) +
-    ggplot2::geom_sf(data = sf_berlin_loc, color = "black", size = 1.2,
+                     fill = col_earth, color = col_earth, size = .2) +
+    ggplot2::geom_sf(data = sf_berlin_loc, color = "black", size = size_pin,
                      shape = 1, stroke = 1.2) +
     ggplot2::geom_sf(data = circle, color = "grey60", fill = NA, size = .5) +
     ggplot2::coord_sf(crs = ortho) +
-    ggplot2::theme_void() +
-    ggplot2::theme(panel.grid = ggplot2::element_line("grey60", size = .3))
+    ggplot2::theme_void()
 
   return(globe)
 }
