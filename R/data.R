@@ -2,7 +2,9 @@
 #'
 #' An sf object containing the multipolygon of Berlin.
 #'
-#' @source Data downloaded from \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
+#' @source
+#' Data downloaded from
+#' \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
 "sf_berlin"
 
 #' Berlin districts (WGS 84)
@@ -16,7 +18,9 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
+#' @source
+#' Data downloaded from
+#' \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
 "sf_districts"
 
 #' Berlin green spaces (WGS 84)
@@ -38,8 +42,10 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
-#'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
+#' @source
+#' Data downloaded from
+#' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+#' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_green"
 
 #' Berlin water bodies (WGS 84)
@@ -58,8 +64,10 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
-#'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
+#' @source
+#' Data downloaded from
+#' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+#' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_water"
 
 #' Berlin roads (WGS 84)
@@ -86,8 +94,10 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
-#'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
+#' @source
+#' Data downloaded from
+#' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+#' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_roads"
 
 #' Berlin railways (WGS 84)
@@ -109,8 +119,10 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
-#'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
+#' @source
+#' Data downloaded from
+#' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+#' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_railways"
 
 #' Berlin metro station (WGS 84)
@@ -129,6 +141,8 @@
 #'   \item geometry. Simple feature geometry.
 #' }
 #'
-#' @source Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
-#'         Please give credit by stating (c) OpenStreetMap contributors when using the data.
+#' @source
+#' Data downloaded from
+#' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+#' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_metro"
