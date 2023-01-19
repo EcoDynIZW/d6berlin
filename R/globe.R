@@ -26,7 +26,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
 
   ## Load country data
-  mini_world <- rnaturalearth::ne_countries(scale = 110, returnclass = "sf")
+  mini_world <- rnaturalearth::ne_countries(scale = 50, returnclass = "sf")
 
   ## Define the orthographic projection ........................................
   lon <- center[1]
