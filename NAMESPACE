@@ -3,5 +3,7 @@
 export("%>%")
 export(base_map_imp)
 export(download_data_berlin)
+export(download_fisbroker_atom)
+export(download_fisbroker_wfs)
 export(globe)
 importFrom(magrittr,"%>%")

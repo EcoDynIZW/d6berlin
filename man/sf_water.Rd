@@ -3,19 +3,20 @@
 \docType{data}
 \name{sf_water}
 \alias{sf_water}
-\title{Berlin waterways (WGS 84)}
+\title{Berlin water bodies (WGS 84)}
 \format{
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 1716 rows and 8 columns.
 }
 \source{
-Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+Data downloaded from
+\url{https://download.geofabrik.de/europe/germany/berlin.html}.
 Please give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
 sf_water
 }
 \description{
-An sf object containing the shape of all waterways found in Berlin. The variables are as follows:
+An sf object containing the shape of all water bodies and ways found in Berlin.
 }
 \details{
 \itemize{

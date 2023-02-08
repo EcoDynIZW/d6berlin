@@ -4,12 +4,27 @@
 \alias{globe}
 \title{Plot Globe with Locator Pin for Berlin (while preserving polygons in orthographic view)}
 \usage{
-globe(col_earth = "#a5bf8b", col_water = "#96b6d8", bg = FALSE)
+globe(
+  center = c(13.405, 52.52),
+  col_earth = "#a5bf8b",
+  col_water = "#96b6d8",
+  col_pin = "black",
+  size_pin = 1.2,
+  bg = TRUE
+)
 }
 \arguments{
+\item{center}{A vector with longitude and latitude (WGS 84) used to center
+the globe and for the locator circle.}
+
 \item{col_earth}{A hex code. Color used for continents.}
 
 \item{col_water}{A hex code. Color used for oceans.}
+
+\item{col_pin}{A hex code. Color used for te locator circle.}
+
+\item{size_pin}{A positive number indicating the symbol size and stroke of
+the locator circle.}
 
 \item{bg}{A Boolean. Should a background be added to the globe?}
 }
