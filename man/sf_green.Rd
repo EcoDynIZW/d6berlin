@@ -8,7 +8,8 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 15167 rows and 8 columns.
 }
 \source{
-Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+Data downloaded from
+\url{https://download.geofabrik.de/europe/germany/berlin.html}.
 Please give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
@@ -17,7 +18,7 @@ sf_green
 \description{
 An sf object containing the shape of all green spaces (defined as natural
 areas and landuse categories "forest", "grass", "meadow", "nature_reserve",
-"scrub", "heath", "beach", and "cliff") in Berlin. The variables are as follows:
+"scrub", "heath", "beach", and "cliff") in Berlin.
 }
 \details{
 \itemize{

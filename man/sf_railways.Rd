@@ -8,14 +8,15 @@
 An object of class \code{sf} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 9711 rows and 11 columns.
 }
 \source{
-Data downloaded from \url{https://download.geofabrik.de/europe/germany/berlin.html}.
+Data downloaded from
+\url{https://download.geofabrik.de/europe/germany/berlin.html}.
 Please give credit by stating (c) OpenStreetMap contributors when using the data.
 }
 \usage{
 sf_railways
 }
 \description{
-An sf object containing all railways in Berlin. The variables are as follows:
+An sf object containing all railways in Berlin.
 }
 \details{
 \itemize{

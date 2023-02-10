@@ -8,7 +8,8 @@
 An object of class \code{sfc_MULTIPOLYGON} (inherits from \code{sfc}) of length 1.
 }
 \source{
-Data downloaded from \url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
+Data downloaded from
+\url{https://daten.odis-berlin.de/en/dataset/bezirksgrenzen}.
 }
 \usage{
 sf_berlin
