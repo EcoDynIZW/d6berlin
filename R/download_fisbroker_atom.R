@@ -18,7 +18,7 @@
 
 #### Function
 download_fisbroker_atom <- function(zip_link, path ,name){
-  if(!dir.exists(here::here(path, name))){
+  if(!dir.exists(here::here(path, name)) == FALSE){
   curl::curl_download(zip_link, destfile = here::here(path ,paste0(name, ".zip")))
   utils::unzip(zipfile = here::here(path, paste0(name, ".zip")), exdir = here::here(path, name))
   suppressMessages(file.remove(here::here(path, paste0(name, ".zip"))))
