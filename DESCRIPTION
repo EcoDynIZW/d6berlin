@@ -29,7 +29,8 @@ Imports:
     rnaturalearth,
     curl,
     utils,
-    magrittr
+    magrittr,
+    ows4R
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
