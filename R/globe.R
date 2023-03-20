@@ -148,10 +148,15 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
       ggplot2::geom_sf(data = circle, fill = "white", color = "transparent")
   }
 
+
+  int <- sf::st_intersection(sf::st_collection_extract(visible), sf::st_collection_extract(visible))
+  sf_inner <- int[int$sov_a3 != int$sov_a3.1 ,]
+
   globe <- globe +
     ggplot2::geom_sf(data = circle, fill = col_water, alpha = .5) +
     ggplot2::geom_sf(data = sf::st_collection_extract(visible),
-                     fill = col_earth, color = col_earth, lwd = .3) +
+                     fill = col_earth, color = "transparent") +
+    ggplot2::geom_sf(data = sf_inner, color = col_earth, lwd = .3) +
     ggplot2::geom_sf(data = sf_berlin_loc, color = col_pin, size = size_pin,
                      shape = 1, stroke = size_pin) +
     ggplot2::geom_sf(data = circle, color = "grey60", fill = NA, size = .5) +
