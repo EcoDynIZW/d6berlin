@@ -5,7 +5,7 @@ Authors@R:
     person(given = "Cédric",
            family = "Scherer",
            role = c("aut", "cre"),
-           email = "scherer@izw-berlin.de",
+           email = "hello@cedricscherer.com",
            comment = c(ORCID = "0000-0003-0465-2543"))
 Description: The `d6berlin` package aims to provide spatial data and template maps for Berlin with carefully chosen and aesthetically pleasing defaults. Template maps include green spaces, imperviousness levels, water bodeis, district borders, and roads plus the utility to add a globe with locator pin, a scalebar, and a caption to include the data sources. All objects are returned as `ggplot` objects.
 License: MIT + file LICENSE
