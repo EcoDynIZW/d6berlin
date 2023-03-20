@@ -21,6 +21,7 @@ it to this function.
 }
 \examples{
 \dontrun{
-download_fisbroker_wfs()
+url <- "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis_bezirk"
+d6berlin::download_fisbroker_wfs(link = url)
 }
 }

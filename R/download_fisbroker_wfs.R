@@ -10,7 +10,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' download_fisbroker_wfs()
+#' url <- "https://fbinter.stadt-berlin.de/fb/wfs/data/senstadt/s_wfs_alkis_bezirk"
+#' d6berlin::download_fisbroker_wfs(link = url)
 #' }
 
 #### Function
@@ -58,6 +59,3 @@ download_fisbroker_wfs <- function(link) { # a data frame is required, with at l
   execution       <- safely_function(link) # applies function on every row of input table
   return(execution$result)
 }
-
-
-

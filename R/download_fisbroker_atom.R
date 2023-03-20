@@ -3,17 +3,16 @@
 #' it to this function.
 #'
 #' @param zip_link the atom url of the data from fisbroker.
-#'
-#' @param name name of the folder where the data should be stored. If dolder does not exist the folder will be created
-#'
-#' @param path path where it has to be stored
+#' @param name name of the folder where the data should be stored (will be created if it does not exists)
+#' @param path path where the file is stored
 #'
 #' @return A folder with the data as a geopackage.
 #'
 #' @export
 #' @examples
 #' \dontrun{
-#' download_fisbroker_atom()
+#' url <- "https://fbinter.stadt-berlin.de/fb/atom/Vegetationshoehen/veghoehe_2020.zip"
+#' download_fisbroker_atom(zip_link = url, path = tempdir(), name = "vheights")
 #' }
 
 #### Function
@@ -31,5 +30,3 @@ download_fisbroker_atom <- function(zip_link, path, name) {
   ras <- terra::rast(list.files(paste0(path, name), pattern = ".tif$", full.names = TRUE)[1])
   return(ras)
 }
-
-

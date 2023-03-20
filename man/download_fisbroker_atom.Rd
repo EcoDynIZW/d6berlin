@@ -11,9 +11,9 @@ download_fisbroker_atom(zip_link, path, name)
 \arguments{
 \item{zip_link}{the atom url of the data from fisbroker.}
 
-\item{path}{path where it has to be stored}
+\item{path}{path where the file is stored}
 
-\item{name}{name of the folder where the data should be stored. If dolder does not exist the folder will be created}
+\item{name}{name of the folder where the data should be stored (will be created if it does not exists)}
 }
 \value{
 A folder with the data as a geopackage.
@@ -25,6 +25,7 @@ it to this function.
 }
 \examples{
 \dontrun{
-download_fisbroker_atom()
+url <- "https://fbinter.stadt-berlin.de/fb/atom/Vegetationshoehen/veghoehe_2020.zip"
+download_fisbroker_atom(zip_link = url, path = tempdir(), name = "vheights")
 }
 }
