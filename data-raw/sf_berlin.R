@@ -3,7 +3,7 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATH -----------------------------------------------------------------
-json_file <- here::here("data-raw", "geo-raw", "bezirksgrenzen.geojson")
+json_file <- "./data-raw/geo-raw/bezirksgrenzen.geojson"
 
 ## PREPARE DATA --------------------------------------------------------------
 ## Berlin districts (WGS 84)

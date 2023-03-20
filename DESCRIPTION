@@ -1,6 +1,6 @@
 Package: d6berlin
 Title: A collection of template maps for visualizing ecological studies in Berlin
-Version: 0.0.0.9000
+Version: 1.0.0
 Authors@R: 
     person(given = "Cédric",
            family = "Scherer",
@@ -20,17 +20,16 @@ Imports:
     scales,
     sf,
     stars,
-    raster,
-    here,
+    terra,
     lwgeom,
     mapview,
     ggspatial,
-    colorspace,
-    rnaturalearth,
+    prismatic,
     curl,
     utils,
-    magrittr,
-    ows4R
+    purrr,
+    ows4R,
+    httr
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3

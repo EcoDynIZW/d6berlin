@@ -14,8 +14,6 @@
 #'
 #' @return A ggplot object containing a template map of Berlin.
 #'
-#' @importFrom magrittr %>%
-#'
 #' @examples
 #' \dontrun{
 #' base_map_imp()
@@ -49,16 +47,16 @@ base_map_imp <- function(color_intensity = .5,
   message("Aggregating raster data.")
 
   ## load data
-  ras_imp_orig <- raster::raster(system.file("extdata", "imperviousness_berlin_copernicus_raster_10m_2018_3035.tif", package = "d6berlin"))
+  ras_imp_orig <- terra::rast(system.file("extdata", "imperviousness_berlin_copernicus_raster_10m_2018_3035.tif", package = "d6berlin"))
 
 
   ## Read 10m raster data (aggregated based on `resolution`)
   fact <- resolution / 10
-  ras_imp <- raster::aggregate(ras_imp_orig, fact = fact)
+  ras_imp <- terra::aggregate(ras_imp_orig, fact = fact)
   ## turn into stars object and reproject
   sf_imp <-
     suppressMessages(
-      stars::st_as_stars(ras_imp) %>%
+      stars::st_as_stars(ras_imp) |>
         sf::st_transform(crs = sf::st_crs(d6berlin::sf_berlin))
     )
 
@@ -67,13 +65,13 @@ base_map_imp <- function(color_intensity = .5,
     grDevices::colorRampPalette(c("grey95", "grey5"))(100), color_intensity
   )
   col_type <-
-    colorspace::desaturate(
-      colorspace::lighten("#a5bf8b", (1 - color_intensity) / 1.3),
+    prismatic::clr_desaturate(
+      prismatic::clr_lighten("#a5bf8b", (1 - color_intensity) / 1.3),
       (1 - color_intensity) / 1.3
     )
   col_water <-
-    colorspace::desaturate(
-      colorspace::lighten("#a9c3df", (1 - color_intensity) / 1.5),
+    prismatic::clr_desaturate(
+      prismatic::clr_lighten("#a9c3df", (1 - color_intensity) / 1.5),
       (1 - color_intensity) / 1.5
     )
 

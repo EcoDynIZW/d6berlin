@@ -14,29 +14,29 @@
 #' }
 
 #### Function
-download_fisbroker_wfs <- function(link){ # a data frame is required, with at least a column for the year of data creation and WFS-link
+download_fisbroker_wfs <- function(link) { # a data frame is required, with at least a column for the year of data creation and WFS-link
 
-  base_fun <- function(single_row){ # function, to be applied on each row of input table
+  base_fun <- function(single_row) { # function, to be applied on each row of input table
 
     single_link <- single_row # WFS-link; in case, please change column
 
-    wfs_client  <- ows4R::WFSClient$new(single_link, serviceVersion = "2.0.0")
+    wfs_client <- ows4R::WFSClient$new(single_link, serviceVersion = "2.0.0")
 
-    layer       <- wfs_client$ # layer name (incl. prefix, e. g.: "fis:")
+    layer <- wfs_client$ # layer name (incl. prefix, e. g.: "fis:")
       getCapabilities()$
-      getFeatureTypes() %>%
-      purrr::map_chr(function(x){x$getName()})
+      getFeatureTypes() |>
+      purrr::map_chr(function(x){ vx$getName() })
 
     if(length(layer) > 1) stop(paste0("This function is not suited for WFS-sets with multiple layers. First layer here: ", layer[1]))
 
     typename <- unlist(strsplit(layer, ":"))[2] # layer name without prefix
 
-    title    <- wfs_client$ # layer title in German
+    title <- wfs_client$ # layer title in German
       getCapabilities()$
       findFeatureTypeByName(layer)$
       getTitle()
 
-    crs      <- wfs_client$ # CRS
+    crs <- wfs_client$ # CRS
       getCapabilities()$
       findFeatureTypeByName(layer)$
       getDefaultCRS()[1]$input

@@ -17,16 +17,18 @@
 #' }
 
 #### Function
-download_fisbroker_atom <- function(zip_link, path ,name){
-  if(!dir.exists(here::here(path, name)) == FALSE){
-  curl::curl_download(zip_link, destfile = here::here(path ,paste0(name, ".zip")))
-  utils::unzip(zipfile = here::here(path, paste0(name, ".zip")), exdir = here::here(path, name))
-  suppressMessages(file.remove(here::here(path, paste0(name, ".zip"))))
-  curl::curl_download(zip_link, destfile = here::here(path, name, paste0(name, ".tif")))
-  }
+download_fisbroker_atom <- function(zip_link, path, name) {
+
+  ## correct path if no trailing slash is provided
+  path <- if (!grepl("/$", path)) paste0(path, "/")
+
+  curl::curl_download(zip_link, destfile = paste0(path, name, ".zip"))
+  utils::unzip(zipfile = paste0(path, name, ".zip"), exdir = paste0(path, name))
+  suppressMessages(file.remove(paste0(path, name, ".zip")))
+  curl::curl_download(zip_link, destfile = paste0(path, name, "/", name, ".tif"))
+
   # you have to set the crs because it is missing sometimes. The default epsg on fisbroker is 25833
-  ras <- terra::rast(list.files(here::here(path, name),
-                                    pattern = ".tif$", full.names = TRUE)[1])
+  ras <- terra::rast(list.files(paste0(path, name), pattern = ".tif$", full.names = TRUE)[1])
   return(ras)
 }
 

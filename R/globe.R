@@ -16,8 +16,6 @@
 #' globe()
 #' }
 #'
-#' @importFrom magrittr %>%
-#'
 #' @export
 globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8",
                   col_pin = "black", size_pin = 1.2, bg = TRUE) {
@@ -26,7 +24,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
 
   ## Load country data
-  mini_world <- rnaturalearth::ne_countries(scale = 50, returnclass = "sf")
+  load(file = "./data/sf_world.rda")
 
   ## Define the orthographic projection ........................................
   lon <- center[1]
@@ -41,13 +39,13 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   ## Define the polygon to split what lies within and without your projection ..
   circle <-
     suppressMessages(
-      sf::st_point(x = c(0, 0)) %>%
-        sf::st_buffer(dist = 6371000) %>%
+      sf::st_point(x = c(0, 0)) |>
+        sf::st_buffer(dist = 6371000) |>
         sf::st_sfc(crs = ortho)
     )
   ## Project this polygon in lat-lon ...........................................
   circle_longlat <-
-    circle %>%
+    circle |>
     sf::st_transform(crs = 4326)
 
   ## You must decompose it into a string with ordered longitudes
@@ -61,7 +59,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
 
     ## Rebuild line ............................................................
     circle_longlat <-
-      sf::st_linestring(circle_coords) %>%
+      sf::st_linestring(circle_coords) |>
       sf::st_sfc(crs = 4326)
 
     if(lat > 0) {
@@ -70,8 +68,8 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
                               c(X = 180, Y = 90),
                               c(X = -180, Y = 90),
                               c(X = -180, circle_coords[1, 'Y']),
-                              circle_coords[1, c('X','Y')])) %>%
-        sf::st_polygon() %>%
+                              circle_coords[1, c('X','Y')])) |>
+        sf::st_polygon() |>
         sf::st_sfc(crs = 4326)
     } else {
       rectangle <- list(rbind(circle_coords,
@@ -79,8 +77,8 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
                               c(X = 180, Y = -90),
                               c(X = -180, Y = -90),
                               c(X = -180, circle_coords[1, 'Y']),
-                              circle_coords[1, c('X','Y')])) %>%
-        sf::st_polygon() %>%
+                              circle_coords[1, c('X','Y')])) |>
+        sf::st_polygon() |>
         sf::st_sfc(crs = 4326)
     }
 
@@ -96,8 +94,8 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   ##                 But works also without the buffer, so using 0 here to
   ##                 return the same type of object.
   visible <- suppressMessages(suppressWarnings(
-    sf::st_intersection(sf::st_make_valid(mini_world),
-                        sf::st_buffer(circle_longlat, 0)) %>%
+    sf::st_intersection(sf::st_make_valid(sf_world),
+                        sf::st_buffer(circle_longlat, 0)) |>
     sf::st_transform(crs = ortho)
   ))
 
@@ -109,15 +107,15 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   visible <- visible[!is.na(broken_reason),]
 
   ## Open and close polygons ...................................................
-  na_visible <- sf::st_cast(na_visible, 'MULTILINESTRING') %>%
+  na_visible <- sf::st_cast(na_visible, 'MULTILINESTRING') |>
     sf::st_cast('LINESTRING', do_split=TRUE)
-  na_visible <- na_visible %>%
+  na_visible <- na_visible |>
     dplyr::mutate(npts = mapview::npts(geometry, by_feature = TRUE))
 
   ## Exclude polygons with less than 4 points ..................................
-  na_visible <- na_visible %>%
-    dplyr::filter(npts >= 4) %>%
-    dplyr::select(-npts) %>%
+  na_visible <- na_visible |>
+    dplyr::filter(npts >= 4) |>
+    dplyr::select(-npts) |>
     sf::st_cast('POLYGON')
 
   ## Fix other broken polygons .................................................
@@ -125,7 +123,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   for(land in broken) {
     result = suppressWarnings(tryCatch({
       visible[land,] <-
-        sf::st_make_valid(visible[land,]) %>%
+        sf::st_make_valid(visible[land,]) |>
         sf::st_collection_extract()
     }, error = function(e) {
       visible[land,] <<- sf::st_buffer(visible[land,], 0)

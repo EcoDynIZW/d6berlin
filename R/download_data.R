@@ -4,8 +4,6 @@
 #'
 #' @return Geodata of Berlin.
 #'
-#' @importFrom magrittr %>%
-#'
 #' @examples
 #' \dontrun{
 #' download_data_berlin()
@@ -16,13 +14,13 @@ download_data_berlin <- function(osmdata = TRUE) {
 
   ## SETUP ---------------------------------------------------------------------
   ## output dir for raw geo files
-  dir <- here::here("data-raw", "geo-raw")
+  dir <- "./data-raw/geo-raw"
   if (!dir.exists(dir)) dir.create(dir, showWarnings = TRUE, recursive = TRUE)
 
   ## DISTRICTS -----------------------------------------------------------------
   ## Berlin districts (WGS 84)
   ## Source: Technologiestiftung Berlin
-  json_file <- here::here("data-raw", "geo-raw", "bezirksgrenzen.geojson")
+  json_file <- "./data-raw/geo-raw/bezirksgrenzen.geojson"
   if(!file.exists(json_file)) {
     ## Download and unzip Berlin districts (WGS 84)
     ##   - German:  https://daten.odis-berlin.de/de/dataset/bezirksgrenzen
@@ -39,8 +37,8 @@ download_data_berlin <- function(osmdata = TRUE) {
   ## Berlin OSM data (WGS 84)
   ## Source: OpenStreetMaps via Geofabrik
   if (osmdata == TRUE) {
-    zip_file <- here::here("data-raw", "geo-raw", "berlin_shapes.zip")
-    shp_path <- here::here("data-raw", "geo-raw", "berlin_shapes")
+    zip_file <- "./data-raw/geo-raw/berlin_shapes.zip"
+    shp_path <- "./data-raw/geo-raw/berlin_shapes"
     if(!file.exists(paste0(shp_path, "/gis_osm_water_a_free_1.shp"))) {
       ## Download and unzip Berlin shapefiles (WGS 84)
       ## https://download.geofabrik.de/europe/germany/berlin.html

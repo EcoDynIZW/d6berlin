@@ -146,3 +146,12 @@
 #' \url{https://download.geofabrik.de/europe/germany/berlin.html}.
 #' Please give credit by stating (c) OpenStreetMap contributors when using the data.
 "sf_metro"
+
+#' Low-resolution world map
+#'
+#' An sf object containing the shapes of all countries to draw the globe, orginally provided by rnaturalearth (scale = 50).
+#'
+#' @source
+#' Data downloaded from
+#' \url{https://www.naturalearthdata.com/}.
+"sf_world"
