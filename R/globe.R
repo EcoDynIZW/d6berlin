@@ -93,7 +93,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
   ##                 But works also without the buffer, so using 0 here to
   ##                 return the same type of object.
   visible <- suppressMessages(suppressWarnings(
-    sf::st_intersection(sf::st_make_valid(sf_world),
+    sf::st_intersection(sf::st_make_valid(d6berlin::sf_world),
                         sf::st_buffer(circle_longlat, 0)) |>
     sf::st_transform(crs = ortho)
   ))
