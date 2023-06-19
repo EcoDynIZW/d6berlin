@@ -22,7 +22,6 @@ Imports:
     stars,
     terra,
     lwgeom,
-    mapview,
     ggspatial,
     prismatic,
     curl,
