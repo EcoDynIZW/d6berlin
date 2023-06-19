@@ -19,12 +19,10 @@
 #' @export
 globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8",
                   col_pin = "black", size_pin = 1.2, bg = TRUE) {
+
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
-
-  ## Load country data
-  load(file = "./data/sf_world.rda")
 
   ## Define the orthographic projection ........................................
   lon <- center[1]
@@ -43,6 +41,7 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
         sf::st_buffer(dist = 6371000) |>
         sf::st_sfc(crs = ortho)
     )
+
   ## Project this polygon in lat-lon ...........................................
   circle_longlat <-
     circle |>
@@ -108,9 +107,11 @@ globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water
 
   ## Open and close polygons ...................................................
   na_visible <- sf::st_cast(na_visible, 'MULTILINESTRING') |>
-    sf::st_cast('LINESTRING', do_split=TRUE)
+    sf::st_cast('LINESTRING', do_split = TRUE)
   na_visible <- na_visible |>
-    dplyr::mutate(npts = mapview::npts(geometry, by_feature = TRUE))
+    #dplyr::mutate(npts = mapview::npts(geometry, by_feature = TRUE))
+    dplyr::mutate(id = dplyr::row_number()) |>
+    dplyr::add_count(id, name = "npts")
 
   ## Exclude polygons with less than 4 points ..................................
   na_visible <- na_visible |>
