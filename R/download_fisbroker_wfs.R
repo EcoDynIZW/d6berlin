@@ -26,7 +26,7 @@ download_fisbroker_wfs <- function(link) { # a data frame is required, with at l
     layer <- wfs_client$ # layer name (incl. prefix, e. g.: "fis:")
       getCapabilities()$
       getFeatureTypes() |>
-      purrr::map_chr(function(x){ vx$getName() })
+      purrr::map_chr(function(x){ x$getName() })
 
     if(length(layer) > 1) stop(paste0("This function is not suited for WFS-sets with multiple layers. First layer here: ", layer[1]))
 
