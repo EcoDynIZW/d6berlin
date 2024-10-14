@@ -28,18 +28,22 @@ download_fisbroker_wfs <- function(link) { # a data frame is required, with at l
       getFeatureTypes() |>
       purrr::map_chr(function(x){ x$getName() })
 
-    if(length(layer) > 1) stop(paste0("This function is not suited for WFS-sets with multiple layers. First layer here: ", layer[1]))
+    if(length(layer)  > 1){
+    layer_select <- c(layer)[utils::menu(c(layer), title = "choose layer")]
+    } else{layer_select <- layer}
 
-    typename <- unlist(strsplit(layer, ":"))[2] # layer name without prefix
+    #if(length(layer) > 1) stop(paste0("This function is not suited for WFS-sets with multiple layers. First layer here: ", layer[1]))
+
+    typename <- unlist(strsplit(layer_select, ":"))[2] # layer name without prefix
 
     title <- wfs_client$ # layer title in German
       getCapabilities()$
-      findFeatureTypeByName(layer)$
+      findFeatureTypeByName(layer_select)$
       getTitle()
 
     crs <- wfs_client$ # CRS
       getCapabilities()$
-      findFeatureTypeByName(layer)$
+      findFeatureTypeByName(layer_select)$
       getDefaultCRS()[1]$input
 
     link2       <- httr::parse_url(single_link)
