@@ -3,15 +3,17 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATHS ----------------------------------------------------------------
-shp_path  <- "./data-raw/geo-raw/berlin_shapes"
+shp_path <- "./data-raw/geo-raw/berlin_shapes"
 
 ## PREPARE DATA --------------------------------------------------------------
 
 ## Berlin metro stations (WGS 84)
 sf_metro <-
   suppressMessages(
-    sf::read_sf(dsn = paste0(shp_path, "/gis_osm_transport_free_1.shp"),
-                layer = "gis_osm_transport_free_1") |>
+    sf::read_sf(
+      dsn = paste0(shp_path, "/gis_osm_transport_free_1.shp"),
+      layer = "gis_osm_transport_free_1"
+    ) |>
       dplyr::filter(
         fclass %in% c("railway_station"),
         stringr::str_detect(name, "^U |^S |^S+U |^U+S")

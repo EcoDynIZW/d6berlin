@@ -14,10 +14,8 @@
 #' url <- "https://fbinter.stadt-berlin.de/fb/atom/Vegetationshoehen/veghoehe_2020.zip"
 #' download_fisbroker_atom(zip_link = url, path = tempdir(), name = "vheights")
 #' }
-
 #### Function
 download_fisbroker_atom <- function(zip_link, path, name) {
-
   ## correct path if no trailing slash is provided
   path <- if (!grepl("/$", path)) paste0(path, "/")
 

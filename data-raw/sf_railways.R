@@ -3,15 +3,17 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATHS ----------------------------------------------------------------
-shp_path  <- "./data-raw/geo-raw/berlin_shapes"
+shp_path <- "./data-raw/geo-raw/berlin_shapes"
 
 ## PREPARE DATA --------------------------------------------------------------
 
 ## Berlin roads (WGS 84)
 sf_railways <-
   suppressMessages(
-    sf::read_sf(dsn = paste0(shp_path, "/gis_osm_railways_free_1.shp"),
-                layer = "gis_osm_railways_free_1") |>
+    sf::read_sf(
+      dsn = paste0(shp_path, "/gis_osm_railways_free_1.shp"),
+      layer = "gis_osm_railways_free_1"
+    ) |>
       dplyr::mutate(
         osm_id = as.factor(osm_id),
         bridge = as.logical(bridge),
