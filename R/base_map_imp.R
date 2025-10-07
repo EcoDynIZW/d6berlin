@@ -10,6 +10,7 @@
 #'               positions via legend_x and legend_y
 #' @param legend_x A numeric. Horizontal position of the legend (0–1)
 #' @param legend_y A numeric. Vertical position of the legend (0–1)
+#' @param font_family A string. Font family used for text labels. Defaults to "sans".
 #' @param print A Boolean. If TRUE prints the map in the viewer pane.
 #'
 #' @return A ggplot object containing a template map of Berlin.
@@ -31,25 +32,26 @@ base_map_imp <- function(color_intensity = .5,
                          legend = "bottom",
                          legend_x = NULL,
                          legend_y = NULL,
+                         font_family = "sans",
                          print = FALSE) {
   if (!dplyr::between(color_intensity, 0, 1)) stop("color_intensity must be a value between 0 and 1.")
-  if (!is.numeric(resolution) | resolution < 10) stop("resolution must be a numeric value of 10 or greater.")
+  if (!is.numeric(resolution) || resolution < 10) stop("resolution must be a numeric value of 10 or greater.")
   if (!is.logical(globe)) stop("globe must be a boolean value (TRUE or FALSE).")
   if (!is.logical(print)) stop("print must be a boolean value (TRUE or FALSE).")
-  if (!legend %in% c("none", "bottom", "top") | !exists("legend_x") | !exists("legend_y")) stop('Please provide as legend position: either "bottom", "top", or "none" or specify a custom legend position via legend_x and legend_y.')
-  if (isTRUE(globe) & legend == "top") stop("When using a globe, the legend should be placed at the bottom. Or specify a custom legend position via legend_x and legend_y.")
+  if (!legend %in% c("none", "bottom", "top") || !exists("legend_x") || !exists("legend_y")) stop('Please provide as legend position: either "bottom", "top", or "none" or specify a custom legend position via legend_x and legend_y.')
+  if (isTRUE(globe) && legend == "top") stop("When using a globe, the legend should be placed at the bottom. Or specify a custom legend position via legend_x and legend_y.")
   if (!is.null(legend_x)) {
-    if (!is.numeric(legend_x) | legend_x > 1 | legend_y < 0) stop("legend_x must be a numeric value between 0 and 1.")
+    if (!is.numeric(legend_x) || legend_x > 1 || legend_y < 0) stop("legend_x must be a numeric value between 0 and 1.")
   }
   if (!is.null(legend_y)) {
-    if (!is.numeric(legend_y) | legend_x > 1 | legend_y < 0) stop("legend_y must be a numeric value between 0 and 1.")
+    if (!is.numeric(legend_y) || legend_x > 1 || legend_y < 0) stop("legend_y must be a numeric value between 0 and 1.")
   }
 
-  if (is.null(legend_x) & legend == "bottom") {
+  if (is.null(legend_x) && legend == "bottom") {
     legend_x <- .5
     legend_y <- .075
   }
-  if (is.null(legend_x) & legend == "top") {
+  if (is.null(legend_x) && legend == "top") {
     legend_x <- .82
     legend_y <- .85
   }
@@ -155,20 +157,20 @@ base_map_imp <- function(color_intensity = .5,
     ggspatial::annotation_scale(
       location = "bl", height = ggplot2::unit(.3, "cm"),
       line_width = 1.3, width_hint = .36,
-      text_col = "black", text_cex = .83, # text_family = font_family,
+      text_col = "black", text_cex = .83, text_family = font_family,
       pad_x = ggplot2::unit(1.5, "cm"), pad_y = ggplot2::unit(1.5, "cm")
     ) +
     ## caption .................................................................
     ggplot2::annotate("text",
       x = 13.09, y = 52.34, label = caption,
       hjust = 0, vjust = 1, color = "black",
-      # family = font_family,
+      family = font_family,
       size = 3.4, lineheight = .95
     ) +
     ggplot2::theme_void() +
     ggplot2::theme(
+      text = ggplot2::element_text(family = font_family),
       plot.margin = ggplot2::margin(0, 10, 0, 10),
-      # text = ggplot2::element_text(family = font_family),
       legend.position = c(legend_x, legend_y)
     )
 
