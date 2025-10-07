@@ -3,20 +3,24 @@
 d6berlin::download_data_berlin()
 
 ## FILE PATHS ----------------------------------------------------------------
-shp_path  <- "./data-raw/geo-raw/berlin_shapes"
+shp_path <- "./data-raw/geo-raw/berlin_shapes"
 
 ## PREPARE DATA --------------------------------------------------------------
 
 ## Berlin roads (WGS 84)
 sf_roads <-
   suppressMessages(
-    sf::read_sf(dsn = paste0(shp_path, "/gis_osm_roads_free_1.shp"),
-                layer = "gis_osm_roads_free_1") |>
+    sf::read_sf(
+      dsn = paste0(shp_path, "/gis_osm_roads_free_1.shp"),
+      layer = "gis_osm_roads_free_1"
+    ) |>
       ## remove paths not used by cars
       filter(
-        !fclass %in% c("footway", "steps", "bridleway",
-                       "path", "pedestrian", "cycleway",
-                       "unknown", "unclassified")
+        !fclass %in% c(
+          "footway", "steps", "bridleway",
+          "path", "pedestrian", "cycleway",
+          "unknown", "unclassified"
+        )
       ) |>
       dplyr::mutate(
         osm_id = as.factor(osm_id),
