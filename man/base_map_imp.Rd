@@ -11,6 +11,7 @@ base_map_imp(
   legend = "bottom",
   legend_x = NULL,
   legend_y = NULL,
+  font_family = "sans",
   print = FALSE
 )
 }
@@ -31,6 +32,8 @@ positions via legend_x and legend_y}
 
 \item{legend_y}{A numeric. Vertical position of the legend (0–1)}
 
+\item{font_family}{A string. Font family used for text labels. Defaults to "sans".}
+
 \item{print}{A Boolean. If TRUE prints the map in the viewer pane.}
 }
 \value{
@@ -42,8 +45,10 @@ Plot Berlin template map showing imperviousness and green areas
 \examples{
 \dontrun{
 base_map_imp()
-base_map_imp(resolution = 500, color_intensity = 1, globe = TRUE,
-             legend_x = .17, legend_y = .12)
+base_map_imp(
+  resolution = 500, color_intensity = 1, globe = TRUE,
+  legend_x = .17, legend_y = .12
+)
 base_map_imp(resolution = 500, color_intensity = 1, legend = "top")
 }
 

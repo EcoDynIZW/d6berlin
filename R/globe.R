@@ -19,6 +19,9 @@
 #' @export
 globe <- function(center = c(13.4050, 52.5200), col_earth = "#a5bf8b", col_water = "#96b6d8",
                   col_pin = "black", size_pin = 1.2, bg = TRUE) {
+  # pre-declaration of NSE columns
+  npts <- id <- NULL
+
   ## code to preserve orthpgraphic view from this gist:
   ## https://gist.github.com/fzenoni/ef23faf6d1ada5e4a91c9ef23b0ba2c1
   ## via this issue: https://github.com/r-spatial/sf/issues/1050
