@@ -67,15 +67,15 @@ summaries
 \code{\link{summarize_within_buffer}} for complete buffer-based analysis
 workflow
 
-Other buffer summaries: 
-\code{\link{aggregation_index}()},
-\code{\link{area_shares}()},
-\code{\link{compute_buffer_intersections}()},
-\code{\link{compute_summary_for_buffers}()},
-\code{\link{line_density}()},
-\code{\link{plot_buffers}()},
-\code{\link{shd_index}()},
-\code{\link{summarize_overall}()},
-\code{\link{summarize_within_buffer}()}
+Other buffer summaries:
+\code{\link[=aggregation_index]{aggregation_index()}},
+\code{\link[=area_shares]{area_shares()}},
+\code{\link[=compute_buffer_intersections]{compute_buffer_intersections()}},
+\code{\link[=compute_summary_for_buffers]{compute_summary_for_buffers()}},
+\code{\link[=line_density]{line_density()}},
+\code{\link[=plot_buffers]{plot_buffers()}},
+\code{\link[=shd_index]{shd_index()}},
+\code{\link[=summarize_overall]{summarize_overall()}},
+\code{\link[=summarize_within_buffer]{summarize_within_buffer()}}
 }
 \concept{buffer summaries}

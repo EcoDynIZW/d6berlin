@@ -165,15 +165,15 @@ ai_analysis <- summarize_within_buffer(
 \code{\link{aggregation_index}} for spatial configuration metrics
 \code{\link{summarize_overall}} for landscape-level statistics
 
-Other buffer summaries: 
-\code{\link{aggregation_index}()},
-\code{\link{area_shares}()},
-\code{\link{compute_buffer_intersections}()},
-\code{\link{compute_summary_for_buffers}()},
-\code{\link{create_buffers}()},
-\code{\link{line_density}()},
-\code{\link{plot_buffers}()},
-\code{\link{shd_index}()},
-\code{\link{summarize_overall}()}
+Other buffer summaries:
+\code{\link[=aggregation_index]{aggregation_index()}},
+\code{\link[=area_shares]{area_shares()}},
+\code{\link[=compute_buffer_intersections]{compute_buffer_intersections()}},
+\code{\link[=compute_summary_for_buffers]{compute_summary_for_buffers()}},
+\code{\link[=create_buffers]{create_buffers()}},
+\code{\link[=line_density]{line_density()}},
+\code{\link[=plot_buffers]{plot_buffers()}},
+\code{\link[=shd_index]{shd_index()}},
+\code{\link[=summarize_overall]{summarize_overall()}}
 }
 \concept{buffer summaries}
